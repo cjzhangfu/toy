@@ -1,14 +1,5 @@
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
-<%@ include file="../global.jsp"%>
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="renderer" content="webkit">
-<meta name="format-detection" content="telephone=no" />
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="_meta.jsp"%>
 <title>会员登录</title>
 <link href="${ctx}/static/style/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/static/style/style.css" rel="stylesheet" type="text/css" />

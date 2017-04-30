@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: fu
-  Date: 2017/4/25
-  Time: 9:03
-  To change this template use File | Settings | File Templates.
---%>
 <!--_header 作为公共模版分离出去-->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header class="navbar-wrapper">

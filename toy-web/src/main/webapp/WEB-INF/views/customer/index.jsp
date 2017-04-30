@@ -6,15 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="../global.jsp" %>
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="renderer" content="webkit">
-    <meta name="format-detection" content="telephone=no" />
+<%@include file="_meta.jsp"%>
     <title>宠物用品商城-首页</title>
     <link href="${ctx}/static/style/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="${ctx}/static/js/jquery-1.8.3.min.js"></script>
@@ -30,43 +22,7 @@
 </head>
 
 <body>
-<!-- 头部 begin -->
-<div class="header">
-    <div class="header_main w1200">
-        <p class="fl">您好，请 <a href="${ctx}/customer/login">[登录]</a> <a href="/customer/regist">[免费注册]</a></p>
-        <ul class="fr ovh">
-            <li class="li_1"><a class="bl" href="###">手机版</a></li><span>|</span>
-            <li class="li_2"><a class="bl" href="help.html">帮助中心</a></li><span>|</span>
-            <li class="li_3"><a class="bl" href="cart.html">购物车0件</a></li><span>|</span>
-            <li class="li_4"><a class="bl" href="user.html">个人中心</a></li>
-        </ul>
-    </div>
-</div>
-<div class="header2">
-    <div class="header2_main w1200">
-        <div class="logo fl"><a class="bl" href="index.html"><img src="${ctx}/static/img/index_logo.png" alt=""></a></div>
-        <div class="search_box fr">
-            <form>
-                <input id="search" class="search" type="text" placeholder="变形金刚   小黄鸭   满额立减"/>
-                <input class="submit" type="submit" value="" />
-            </form>
-        </div>
-    </div>
-</div>
-<div class="nav">
-    <div class="nav_main w1200">
-        <ul class="ovh">
-            <li><a href="list.jsp">首页</a></li><span>|</span>
-            <li><a href="list.jsp">婴儿专区(0-3岁)</a></li><span>|</span>
-            <li><a href="list.jsp">幼儿专区(3-6岁)</a></li><span>|</span>
-            <li><a href="list.jsp">儿童专区(6-11岁)</a></li><span>|</span>
-            <li><a href="list.jsp">少年专区(11-15岁)</a></li><span>|</span>
-            <li><a href="list.jsp">青年专区(>15岁)</a></li><span>|</span>
-            <li><a href="list.jsp">周边专区</a></li>
-        </ul>
-    </div>
-</div>
-<!-- 头部 end -->
+<%@include file="_head.jsp"%>
 
 <!-- 首页主体部分 begin -->
 <div class="index">
@@ -141,33 +97,36 @@
                     <div><a href="###"><img src="${ctx}/static/img/index_banner1.jpg" alt=""/></a></div>
                 </div>
             </div>
-            <%--<div class="right_adv">--%>
-                <%--<div class="adv">--%>
-                    <%--<a href="###"><img src="${ctx}/static/img/index_adv1.jpg" alt=""/></a>--%>
-                <%--</div>--%>
-                <%--<div class="adv">--%>
-                    <%--<a href="###"><img src="${ctx}/static/img/index_adv2.jpg" alt=""/></a>--%>
-                <%--</div>--%>
-                <%--<div class="adv last">--%>
-                    <%--<a href="###"><img src="${ctx}/static/img/index_adv3.jpg" alt=""/></a>--%>
-                <%--</div>--%>
-            <%--</div>--%>
+            <div class="right_adv">
+                <div class="adv">
+                    <a href="###"><img src="${ctx}/static/img/index_adv1.jpg" alt=""/></a>
+                </div>
+                <div class="adv">
+                    <a href="###"><img src="${ctx}/static/img/index_adv2.jpg" alt=""/></a>
+                </div>
+                <div class="adv last">
+                    <a href="###"><img src="${ctx}/static/img/index_adv3.jpg" alt=""/></a>
+                </div>
+            </div>
             <div class="new">
                 <div class="title"><span>NEW <b>新品展示</b> SHOW</span><i></i></div>
                 <div class="list_con">
                     <ul class="ovh">
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
+                        <c:forEach items="${toys}" var="toys">
+                            <li>
+                                <a href="${ctx}/toy/toyDetail?id=${toys.id}">
+                                    <div class="img">
+                                        <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
+                                    </div>
+                                    <div class="text">
+                                        <h3>${toys.name}</h3>
+                                        <h4>${toys.decription}</h4>
+                                        <p><b>￥${toys.price}</b>￥${toys.price}</span></p>
+                                    </div>
+                                </a>
+                            </li>
+                        </c:forEach>
+
                         <li>
                             <a href="show.html">
                                 <div class="img">
