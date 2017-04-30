@@ -7,6 +7,7 @@ public class ToysInfoBean {
     private String id;
     private String name;
     private Integer price;
+    private Integer num;
     private String type;
     private String brand;
     private Integer startAges;
@@ -14,6 +15,14 @@ public class ToysInfoBean {
     private String decription;
     private String picture;
     private Integer ishot;
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
 
     public String getId() {
         return id;

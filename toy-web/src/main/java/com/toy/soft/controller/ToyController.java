@@ -1,5 +1,7 @@
 package com.toy.soft.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.toy.soft.entity.PageQuery;
 import com.toy.soft.entity.ToysInfoBean;
 import com.toy.soft.service.ToysInfoService;
 import org.slf4j.Logger;
@@ -21,11 +23,23 @@ public class ToyController {
     @Autowired
     private ToysInfoService toysInfoService;
     @RequestMapping("/toyDetail")
-    public String toyDetail(@RequestParam("") String id, Model model){
+    public String toyDetail(@RequestParam String id, Model model){
         logger.info(id);
         ToysInfoBean toysInfoBean=toysInfoService.selectById(id);
         model.addAttribute("toys",toysInfoBean);
         return "customer/productDetail";
     }
-
+    @RequestMapping("/list")
+    public String toyList(@RequestParam String type, Model model){
+        logger.info(type);
+        PageQuery pageQuery=new PageQuery();
+        pageQuery.setPageNum(1);
+        pageQuery.setPageSize(20);
+        PageInfo<ToysInfoBean> pageInfo=toysInfoService.selectByTypepage(pageQuery,type);
+        if(pageInfo!=null&&pageInfo.getList()!=null&&pageInfo.getList().size()>0){
+            model.addAttribute("toysList",pageInfo.getList());
+        }
+        logger.info(pageInfo.getList().toString());
+        return "customer/list";
+    }
 }

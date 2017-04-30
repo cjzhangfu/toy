@@ -44,4 +44,10 @@ public interface ToysInfoMapper {
      */
     ToysInfoBean selectById(String id );
 
+    /**
+     * 通过类型分页查询
+     * @return
+     */
+    List<ToysInfoBean> selectByTypepage(String type);
+
 }

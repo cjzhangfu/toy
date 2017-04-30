@@ -12,9 +12,9 @@
             </c:choose>
         <ul class="fr ovh">
             <li class="li_1"><a class="bl" href="###">手机版</a></li><span>|</span>
-            <li class="li_2"><a class="bl" href="help.html">帮助中心</a></li><span>|</span>
+            <li class="li_2"><a class="bl" href="${ctx}/helpCenter">帮助中心</a></li><span>|</span>
             <li class="li_3" id="collectBox"><a class="bl" href="cart.html">购物车<b>0</b>件</a></li><span>|</span>
-            <li class="li_4"><a class="bl" href="user.html">个人中心</a></li>
+            <li class="li_4"><a class="bl" href="${ctx}/personCenter">个人中心</a></li>
         </ul>
     </div>
 </div>
@@ -32,13 +32,12 @@
 <div class="nav">
     <div class="nav_main w1200">
         <ul class="ovh">
-            <li><a href="list.jsp">首页</a></li><span>|</span>
-            <li><a href="list.jsp">婴儿专区(0-3岁)</a></li><span>|</span>
-            <li><a href="list.jsp">幼儿专区(3-6岁)</a></li><span>|</span>
-            <li><a href="list.jsp">儿童专区(6-11岁)</a></li><span>|</span>
-            <li><a href="list.jsp">少年专区(11-15岁)</a></li><span>|</span>
-            <li><a href="list.jsp">青年专区(>15岁)</a></li><span>|</span>
-            <li><a href="list.jsp">周边专区</a></li>
+            <li><a href="${ctx}/">首页</a></li><span>|</span>
+            <li><a href="${ctx}/toy/list?type=婴儿">婴儿专区(0-3岁)</a></li><span>|</span>
+            <li><a href="${ctx}/toy/list?type=幼儿">幼儿专区(3-6岁)</a></li><span>|</span>
+            <li><a href="${ctx}/toy/list?type=儿童">儿童专区(6-11岁)</a></li><span>|</span>
+            <li><a href="${ctx}/toy/list?type=少年">少年专区(11-15岁)</a></li><span>|</span>
+            <li><a href="${ctx}/toy/list?type=青年">青年专区(>15岁)</a></li><span>|</span>
         </ul>
     </div>
 </div>

@@ -6,6 +6,7 @@
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="price" property="price" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="num" property="num" jdbcType="INTEGER"/>
         <result column="brand" property="brand" jdbcType="VARCHAR"/>
         <result column="startAges" property="startAges" jdbcType="INTEGER"/>
         <result column="endAges" property="endAges" jdbcType="INTEGER"/>
@@ -14,8 +15,8 @@
         <result column="ishot" property="ishot" jdbcType="INTEGER"/>
     </resultMap>
     <insert id="insert" parameterType="com.toy.soft.entity.ToysInfoBean">
-        INSERT INTO t_toys(id,name,price,type,brand,startAges,endAges,decription,picture,ishot)
-        VALUES (#{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{price,jdbcType=INTEGER},#{type,jdbcType=VARCHAR},
+        INSERT INTO t_toys(id,name,price,num,type,brand,startAges,endAges,decription,picture,ishot)
+        VALUES (#{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{price,jdbcType=INTEGER},#{num,jdbcType=INTEGER},#{type,jdbcType=VARCHAR},
         #{brand,jdbcType=VARCHAR},#{startAges,jdbcType=INTEGER},#{endAges,jdbcType=INTEGER},#{decription,jdbcType=VARCHAR},
         #{picture,jdbcType=VARCHAR},#{ishot,jdbcType=INTEGER})
 
@@ -27,6 +28,7 @@
         UPDATE t_toys
         SET name=#{name,jdbcType=VARCHAR},
             price=#{price,jdbcType=INTEGER},
+            num=#{num,jdbcType=INTEGER},
             type=#{type,jdbcType=VARCHAR},
             brand=#{brand,jdbcType=VARCHAR},
             startAges=#{startAges,jdbcType=INTEGER},
@@ -41,6 +43,9 @@
     </select>
     <select id="selectById" parameterType="String" resultMap="BaseResultMap">
         SELECT * FROM t_toys WHERE id=#{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectByTypepage" resultMap="BaseResultMap">
+        SELECT * FROM t_toys WHERE type=#{type,jdbcType=VARCHAR}
     </select>
 
 </mapper>

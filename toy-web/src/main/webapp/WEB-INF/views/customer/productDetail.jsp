@@ -51,7 +51,7 @@
                             <input class="quantity-text" data-specid="0" readonly value="1" type="text">
                             <a class="increment  operationAdd" data-stock="3">+</a>
                         </div>
-						<p class="fl">库存<span class="stork">6</span>件</p>
+						<p class="fl">库存<span class="stork">${toys.num}</span>件</p>
                     </h3>
 
 					<div class="button">

@@ -40,4 +40,11 @@ public class ToysInfoService {
         ToysInfoBean toysInfoBean=mapper.selectById(id);
         return toysInfoBean;
     }
+    public PageInfo<ToysInfoBean> selectByTypepage(PageQuery paq,String type){
+        int pageNum=paq.getPageNum();
+        int pageSize=paq.getPageSize();
+        PageHelper.startPage(pageNum,pageSize);
+        List<ToysInfoBean> list=mapper.selectByTypepage(type);
+        return new PageInfo<ToysInfoBean>(list);
+    }
 }

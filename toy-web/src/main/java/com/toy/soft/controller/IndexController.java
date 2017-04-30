@@ -34,4 +34,28 @@ public class IndexController {
         logger.info(pageInfo.getList().toString());
         return "customer/index";
     }
+    @RequestMapping("/helpCenter")
+    public String helpCenter(){
+        return "customer/helpCenter";
+    }
+    @RequestMapping("/aboutUs")
+    public String aboutUs(){
+        return "customer/aboutUs";
+    }
+    @RequestMapping("/process")
+    public String process(){
+        return "customer/process";
+    }
+    @RequestMapping("/guide")
+    public String guide(){
+        return "customer/guide";
+    }
+    @RequestMapping("/personCenter")
+    public String personCenter(){
+        return "customer/personCenter";
+    }
+    @RequestMapping("/cart")
+    public String cart(){
+        return "customer/cart";
+    }
 }
