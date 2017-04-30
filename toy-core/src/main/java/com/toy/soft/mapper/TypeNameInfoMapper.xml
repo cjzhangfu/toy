@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.toy.soft.mapper.TypeNameInfoMapper">
+    <resultMap id="BaseResultMap" type="com.toy.soft.entity.TypeNameInfoBean">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="typename" property="typename" jdbcType="VARCHAR"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.toy.soft.entity.TypeNameInfoBean">
+        INSERT INTO t_typename(id,typename)
+        VALUES (#{id,jdbcType=VARCHAR},#{typename,jdbcType=VARCHAR})
+    </insert>
+    <delete id="delectBykey" parameterType="String">
+        DELETE FROM t_typename WHERE id=#{id,jdbcType=VARCHAR}
+    </delete>
+    <update id="updateBykey" parameterType="com.toy.soft.entity.TypeNameInfoBean">
+        UPDATE t_typename
+        SET typename=#{typename,jdbcType=VARCHAR}
+        WHERE id=#{id,jdbcType=VARCHAR}
+    </update>
+    <select id="select" resultMap="BaseResultMap">
+        SELECT * FROM t_typename
+    </select>
+</mapper>

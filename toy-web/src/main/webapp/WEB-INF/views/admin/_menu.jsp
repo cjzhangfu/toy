@@ -43,20 +43,6 @@
         </ul>
     </dd>
 </dl>-->
-        <!--<dl id="menu-member">
-            <dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a href="member-list.html" title="会员列表">会员列表</a></li>
-                    <li><a href="member-del.html" title="删除的会员">删除的会员</a></li>
-                    <li><a href="member-level.html" title="等级管理">等级管理</a></li>
-                    <li><a href="member-scoreoperation.html" title="积分管理">积分管理</a></li>
-                    <li><a href="member-record-browse.html" title="浏览记录">浏览记录</a></li>
-                    <li><a href="member-record-download.html" title="下载记录">下载记录</a></li>
-                    <li><a href="member-record-share.html" title="分享记录">分享记录</a></li>
-        </ul>
-    </dd>
-</dl>-->
         <dl id="menu-admin">
             <dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
@@ -79,7 +65,7 @@
             <dt><i class="Hui-iconfont">&#xe613;</i> 玩具分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a href="toys-type.html" title="分类管理">玩具分类管理</a></li>
+                    <li><a href="${ctx}/typeName/typeName_list" title="分类管理">玩具分类管理</a></li>
                 </ul>
             </dd>
         </dl>
