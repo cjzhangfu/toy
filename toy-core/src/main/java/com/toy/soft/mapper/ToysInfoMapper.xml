@@ -47,5 +47,7 @@
     <select id="selectByTypepage" resultMap="BaseResultMap">
         SELECT * FROM t_toys WHERE type=#{type,jdbcType=VARCHAR}
     </select>
-
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM t_toys
+    </select>
 </mapper>

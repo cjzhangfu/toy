@@ -35,6 +35,20 @@ public class TypeNameController {
         model.addAttribute("typeName",list);
         return "admin/typeName_list";
     }
+    @RequestMapping(value = "/typeNameList",method = RequestMethod.GET)
+    public
+    @ResponseBody JsonMessage<List<TypeNameInfoBean>> typeNameList(){
+        JsonMessage<List<TypeNameInfoBean>> result = new JsonMessage<>();
+        try{
+            List<TypeNameInfoBean> list=typeNameInfoService.select();
+            result.setStatus(OperateResult.SUCCESS.toString());
+            result.setData(list);
+        }catch(Exception e){
+            result.setStatus(OperateResult.FALLED.toString());
+            result.setErrorMsg("添加失败！");
+        }
+       return result;
+    }
     @RequestMapping(value = "/typeNameDelete",method = RequestMethod.POST)
     public
     @ResponseBody

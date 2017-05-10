@@ -49,5 +49,9 @@ public interface ToysInfoMapper {
      * @return
      */
     List<ToysInfoBean> selectByTypepage(String type);
+    /**
+     * 查询全部
+     */
+    List<ToysInfoBean> selectAll();
 
 }

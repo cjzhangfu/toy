@@ -53,11 +53,11 @@ public class CustomerController {
             return jsonMessage;
         }
     }
-    @RequestMapping("/toys_list")
-    public String adminLogin(){
-        System.out.println("11111");
-        return "admin/toys_list";
-    }
+//    @RequestMapping("/toys_list")
+//    public String adminLogin(){
+//        System.out.println("11111");
+//        return "admin/toys_list";
+//    }
     @RequestMapping(value = "/regist",method = RequestMethod.GET)
     public String regist(){
         return "customer/regist";

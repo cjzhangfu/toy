@@ -22,7 +22,7 @@
             <dt><i class="Hui-iconfont">&#xe613;</i> 玩具管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a href="picture-list.html" title="玩具管理">玩具管理</a></li>
+                    <li><a href="${ctx}/toy/admin_toyList" title="玩具管理">玩具管理</a></li>
                 </ul>
             </dd>
         </dl>

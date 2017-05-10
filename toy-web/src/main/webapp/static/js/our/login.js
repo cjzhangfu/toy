@@ -15,7 +15,7 @@
         };
         ajax(params,function (data) {
             if(data.power=="1"){
-                window.location.href=place+'/customer/toys_list';
+                window.location.href=place+'/toy/admin_toyList';
             }else{
                 window.location.href='/';
             }

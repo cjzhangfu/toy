@@ -83,7 +83,7 @@
 </div>
 <div class="copyright">
     <div class="copyright_main w1200">
-        <p class="fl">版权所有：天津奔唐网络科技发展有限公司 津ICP备案：12345678号</p>
+        <p class="fl">版权所有：天津城建大学计算机与信息工程学院 12345678号</p>
         <div class="ico fr">
             <div class="ico1 fl"><a class="bl" href="###" target="_blank"></a></div>
             <div class="ico2 fl"><a class="bl" href="###" target="_blank"></a></div>

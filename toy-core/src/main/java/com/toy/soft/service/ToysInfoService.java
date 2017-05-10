@@ -47,4 +47,7 @@ public class ToysInfoService {
         List<ToysInfoBean> list=mapper.selectByTypepage(type);
         return new PageInfo<ToysInfoBean>(list);
     }
+    public List<ToysInfoBean> selectAll(){
+        return mapper.selectAll();
+    }
 }

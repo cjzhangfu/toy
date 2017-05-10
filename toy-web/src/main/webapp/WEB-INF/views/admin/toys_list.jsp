@@ -20,7 +20,7 @@
                 <input type="text" name="" id="" placeholder=" 玩具名称" style="width:320px" class="input-text">
                 <button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜玩具</button>
             </div>
-            <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><!--<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>--> <a class="btn btn-primary radius" onclick="picture_add('添加图片','picture-add.html')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加图片</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
+            <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><!--<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>--> <a class="btn btn-primary radius" onclick="toy_add(this)" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加玩具</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
             <div class="mt-20">
                 <table class="table table-border table-bordered table-bg table-hover table-sort">
                     <thead>
@@ -28,64 +28,34 @@
                         <th width="40"><input name="" type="checkbox" value=""></th>
                         <th width="80">ID</th>
                         <th width="100">名称</th>
-                        <th width="100">价格</th>
+                        <th width="20">库存数量</th>
+                        <th width="40">价格</th>
                         <th>分类</th>
-                        <th width="150">品牌</th>
+                        <th width="40">品牌</th>
                         <th width="150">适合年龄段</th>
                         <th width="60">描述</th>
+                        <th width="60">图片路径</th>
                         <th width="100">是否热门</th>
                         <th width="100">操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="text-c">
-                        <td><input name="" type="checkbox" value=""></td>
-                        <td>001</td>
-                        <td>方法</td>
-                        <td>100</td>
-                        <td class="text-l">幼儿</td>
-                        <td class="text-c">海力士</td>
-                        <td>10-15</td>
-                        <td class="td-status"><span>这是一款好产品</span></td>
-                        <td>是</td>
-                        <td class="td-manage"> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-                    </tr>
-                    <tr class="text-c">
-                        <td><input name="" type="checkbox" value=""></td>
-                        <td>001</td>
-                        <td>方法</td>
-                        <td>100</td>
-                        <td class="text-l">幼儿</td>
-                        <td class="text-c">海力士</td>
-                        <td>10-15</td>
-                        <td class="td-status"><span>这是一款好产品</span></td>
-                        <td>是</td>
-                        <td class="td-manage"> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-                    </tr>
-                    <tr class="text-c">
-                        <td><input name="" type="checkbox" value=""></td>
-                        <td>001</td>
-                        <td>方法</td>
-                        <td>100</td>
-                        <td class="text-l">幼儿</td>
-                        <td class="text-c">海力士</td>
-                        <td>10-15</td>
-                        <td class="td-status"><span>这是一款好产品</span></td>
-                        <td>是</td>
-                        <td class="td-manage"> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-                    </tr>
-                    <tr class="text-c">
-                        <td><input name="" type="checkbox" value=""></td>
-                        <td>001</td>
-                        <td>方法</td>
-                        <td>100</td>
-                        <td class="text-l">幼儿</td>
-                        <td class="text-c">海力士</td>
-                        <td>10-15</td>
-                        <td class="td-status"><span>这是一款好产品</span></td>
-                        <td>是</td>
-                        <td class="td-manage"> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="picture_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-                    </tr>
+                    <c:forEach items="${admin_toyList}" var="toyList">
+                        <tr class="text-c">
+                            <td><input name="" type="checkbox" value=""></td>
+                            <td>${toyList.id}</td>
+                            <td>${toyList.name}</td>
+                            <td>${toyList.num}</td>
+                            <td>${toyList.price}</td>
+                            <td class="text-l">${toyList.type}</td>
+                            <td class="text-c">${toyList.brand}</td>
+                            <td>${toyList.startAges}-${toyList.endAges}</td>
+                            <td class="td-status"><span>${toyList.decription}</span></td>
+                            <td>${toyList.picture}</td>
+                            <td>${toyList.ishot}</td>
+                            <td class="td-manage"> <a style="text-decoration:none" class="ml-5" onClick="picture_edit('图库编辑','picture-add.html','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="toy_del(this)" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -108,14 +78,14 @@
             {"orderable":false,"aTargets":[0,8]}// 制定列不参与排序
         ]
     });
-    /*图片-添加*/
-    function picture_add(title,url){
+    /*玩具-添加*/
+    function toy_add(opt){
         var index = layer.open({
             type: 2,
-            title: title,
-            content: url
+            title: '添加玩具 ',
+            content: '${ctx}/toy/toy_add',
+            area: ['680px', '500px']
         });
-        layer.full(index);
     }
     /*图片-查看*/
     function picture_show(title,url,id){
@@ -181,10 +151,21 @@
 //	layer.full(index);
     }
     /*图片-删除*/
-    function picture_del(obj,id){
+    function toy_del(obj){
+        var picture_id = $(obj).parents("tr").find("td").eq(1).text();
         layer.confirm('确认要删除吗？',function(index){
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!',{icon:1,time:1000});
+            var params={
+                url:place+"/toy/toyDelete",
+                method:"post",
+                data:{
+                    id:picture_id
+                }
+            }
+            ajax(params,function (data) {
+                console.log(data);
+                $(obj).parents("tr").remove();
+                layer.msg('已删除!',{icon:1,time:1000});
+            })
         });
     }
 </script>
