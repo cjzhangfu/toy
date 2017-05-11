@@ -85,4 +85,48 @@ public class ToyController {
         }
         return result;
     }
+    @RequestMapping(value = "/updateToy")
+    public
+    String updateToy(String id,Model model){
+        try{
+            ToysInfoBean toysInfoBean=toysInfoService.selectById(id);
+            model.addAttribute("toys",toysInfoBean);
+        }catch(Exception e){
+            logger.error(e.getMessage());
+        }
+        return "admin/toys_update";
+    }
+    @RequestMapping(value = "/toy_uploadToylast",method = RequestMethod.POST)
+    public
+    @ResponseBody JsonMessage<String> uploadToylast(ToysInfoBean toysInfoBean){
+        JsonMessage<String> result=new JsonMessage<>();
+        try{
+            String oldPicture =(toysInfoService.selectById(toysInfoBean.getId())).getPicture();
+
+            String currentPicture = oldPicture+','+toysInfoBean.getPicture();
+            toysInfoBean.setPicture(currentPicture);
+            toysInfoService.updateToys(toysInfoBean);
+            result.setStatus(OperateResult.SUCCESS.toString());
+            result.setData("修改成功！");
+        }catch(Exception e){
+            logger.error(e.getMessage());
+            result.setStatus(OperateResult.FALLED.toString());
+            result.setData("修改失败！");
+        }
+        return result;
+    }
+    @RequestMapping(value = "/toy_search",method = RequestMethod.GET)
+    public
+    @ResponseBody  JsonMessage<List<ToysInfoBean>>toy_search(String name){
+        JsonMessage<List<ToysInfoBean>> result = new JsonMessage<>();
+        try{
+            List<ToysInfoBean> list=toysInfoService.selectByNames(name);
+            result.setStatus(OperateResult.SUCCESS.toString());
+            result.setData(list);
+        }catch(Exception e){
+            result.setStatus(OperateResult.FALLED.toString());
+            result.setErrorMsg("查询失败！");
+        }
+        return result;
+    }
 }

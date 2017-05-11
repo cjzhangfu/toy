@@ -50,4 +50,7 @@ public class ToysInfoService {
     public List<ToysInfoBean> selectAll(){
         return mapper.selectAll();
     }
+    public List<ToysInfoBean> selectByNames(String name){
+        return mapper.selectByNames(name);
+    }
 }

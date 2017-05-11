@@ -36,7 +36,7 @@ public class UploadController {
             {
                 MultipartFile file = multiRequest.getFile(iter.next());
                 File targetfile = new File(path,file.getOriginalFilename());
-                String currentName = path+file.getOriginalFilename();
+                String currentName = file.getOriginalFilename();
                 if(!targetfile.exists()){
                     targetfile.mkdir();
                 }

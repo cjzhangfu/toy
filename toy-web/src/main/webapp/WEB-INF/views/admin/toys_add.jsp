@@ -10,6 +10,7 @@
     <script type="text/javascript" src="${ctx}/static/js/plugins/upload/zyUpload.js"></script>
     <!-- 引用初始化JS -->
     <script type="text/javascript" src="${ctx}/static/js/plugins/upload/demo.js"></script>
+<script type="text/javascript" src="${ctx}/static/H_ui/static/lib/layer/2.4/layer.js"></script>
 </head>
 <body>
 <div class="page-container">
@@ -137,6 +138,7 @@
         }
     }
     ajax(params,function(data){
+        console.log(data);
         layer.msg('添加成功!',{icon:1,time:1000});
         layer.closeAll();
     })

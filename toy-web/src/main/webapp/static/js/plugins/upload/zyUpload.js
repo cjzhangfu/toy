@@ -335,6 +335,7 @@ www.198zone.com
 						eleProgress.css("width",percent);
 					},
 					onSuccess: function(file, response) {
+						console.log(response,typeof response)
 						var resData=JSON.parse(response);
 						console.log(typeof resData)
 						var res;
