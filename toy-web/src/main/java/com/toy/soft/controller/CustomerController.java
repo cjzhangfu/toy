@@ -53,11 +53,31 @@ public class CustomerController {
             return jsonMessage;
         }
     }
-//    @RequestMapping("/toys_list")
-//    public String adminLogin(){
-//        System.out.println("11111");
-//        return "admin/toys_list";
-//    }
+
+    /**
+     * 退出登录
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/loginOut",method = RequestMethod.GET)
+    public
+    @ResponseBody JsonMessage<String> loginOut(HttpServletRequest request){
+        request.getSession().invalidate();
+        JsonMessage<String> result=new JsonMessage<>();
+        result.setStatus(OperateResult.SUCCESS.toString());
+        result.setData("成功");
+        return result;
+    }
+
+    /**
+     * 切换账户
+     * @return
+     */
+    @RequestMapping("/changeAccount")
+    public String changeAccount(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "customer/login";
+    }
     @RequestMapping(value = "/regist",method = RequestMethod.GET)
     public String regist(){
         return "customer/regist";

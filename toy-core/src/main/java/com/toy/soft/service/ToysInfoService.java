@@ -53,4 +53,7 @@ public class ToysInfoService {
     public List<ToysInfoBean> selectByNames(String name){
         return mapper.selectByNames(name);
     }
+    public List<ToysInfoBean> selectByListToysId(List<String> toysId){
+        return mapper.selectByListToysId(toysId);
+    }
 }

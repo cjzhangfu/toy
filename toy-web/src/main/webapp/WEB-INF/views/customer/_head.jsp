@@ -13,7 +13,7 @@
         <ul class="fr ovh">
             <li class="li_1"><a class="bl" href="###">手机版</a></li><span>|</span>
             <li class="li_2"><a class="bl" href="${ctx}/helpCenter">帮助中心</a></li><span>|</span>
-            <li class="li_3" id="collectBox"><a class="bl" href="cart.html">购物车<b>0</b>件</a></li><span>|</span>
+            <li class="li_3" id="collectBox"><a class="bl" href="${ctx}/cart/toyCartInto">购物车<b>0</b>件</a></li><span>|</span>
             <li class="li_4"><a class="bl" href="${ctx}/personCenter">个人中心</a></li>
         </ul>
     </div>

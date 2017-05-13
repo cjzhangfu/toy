@@ -70,6 +70,36 @@ $(function(){
 			else{
 			}
 		});
-
+	function toyCart(){
+		var params ={
+			url:place+"/cart/toyCart",
+			method:"get",
+		}
+		ajax(params,function (data) {
+			var html="";
+			$.each(data,function (i,v) {
+				html+='<tr>'+
+				'<td class="goods"><a href="show.html" target="_blank"><img src="'+/uploadImage/+v.toysInfoBean.picture+'" alt=""/></a><span><a href="show.html" target="_blank">'+v.toysInfoBean.decription+'</a></span><b>颜色分类：红色</b></td>'+
+				'<td class="price">'+
+				'<h3>市场价格:￥'+v.toysInfoBean.price+'</h3>'+
+				'<h4>价　　格：<span>￥<span class="unit_price">'+v.toysInfoBean.price+'</span><span></h4>'+
+				'</td>'+
+				'<td class="quantity-form2">'+
+				'<a class="decrement operationSubt">-</a>'+
+				'<input class="quantity-text" value="'+v.num+'" type="text">'+
+				'<a class="increment operationAdd">+</a>'+
+				'<p class="fl">库存<span class="stock">'+v.toysInfoBean.num+'</span>件</p>'+
+				'</td>'+
+				'<td class="subtotalPeice">￥'+parseInt(v.num)*parseInt(v.toysInfoBean.price)+'</td>'+
+				'<td class="operation">'+
+				'<a class="pay" href="###">购买</a>'+
+				'<a class="delete" href="javascript:;">删除</a>'+
+				'</td>'+
+				'</tr>';
+			})
+			$("#cartData").html(html);
+		})
+	}
+	toyCart();
 	
 });

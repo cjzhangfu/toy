@@ -53,5 +53,11 @@
     <select id="selectByNames" resultMap="BaseResultMap">
         SELECT * FROM t_toys WHERE name=#{name,jdbcType=VARCHAR}
     </select>
-
+    <select id="selectByListToysId" resultMap="BaseResultMap">
+        select * from t_toys WHERE id IN
+        <foreach item="item" collection="list"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach> ;
+    </select>
 </mapper>

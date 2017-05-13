@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toy.soft.mapper.CollectionInfoMapper">
+    <resultMap id="BaseResultMap" type="com.toy.soft.entity.CollectionInfoBean">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="userid" property="userid" jdbcType="VARCHAR"/>
+        <result column="toysid" property="toysid" jdbcType="VARCHAR"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.toy.soft.entity.CollectionInfoBean">
+        INSERT INTO t_collection (id,userid,toysid)
+        VALUES (#{id,jdbcType=VARCHAR},#{userid,jdbcType=VARCHAR},#{toysid,jdbcType=VARCHAR})
+    </insert>
+    <delete id="delectBykey" parameterType="String">
+        DELETE FROM t_collection WHERE id=#{id,jdbcType=VARCHAR}
+    </delete>
+    <update id="updateBykey" parameterType="String">
+        UPDATE t_collection SET
+        userid=#{userid,jdbcType=VARCHAR},
+        toysid=#{toysid,jdbcType=VARCHAR},
+        WHERE id=#{id,jdbcType=VARCHAR}
+    </update>
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM t_collection
+    </select>
+    <select id="selectByUserId" parameterType="String" resultMap="BaseResultMap">
+        SELECT * FROM t_collection WHERE userid=#{userid,jdbcType=VARCHAR}
+    </select>
+</mapper>
