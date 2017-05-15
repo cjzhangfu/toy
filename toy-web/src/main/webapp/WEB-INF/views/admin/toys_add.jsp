@@ -140,7 +140,8 @@
     ajax(params,function(data){
         console.log(data);
         layer.msg('添加成功!',{icon:1,time:1000});
-        layer.closeAll();
+        parent.location.reload();
+        parent.layer.close();
     })
 }
 </script>

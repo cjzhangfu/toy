@@ -115,8 +115,7 @@
                             <li>
                                 <a href="${ctx}/toy/toyDetail?id=${toys.id}">
                                     <div class="img">
-                                        <%--<img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>--%>
-                                            <img src="${ctx}/static/img/p1.jpg" alt=""/>
+                                        <img src="uploadImage/${fn:split(toys.picture,',')[0]}" alt=""/>
                                     </div>
                                     <div class="text">
                                         <h3>${toys.name}</h3>
@@ -126,139 +125,6 @@
                                 </a>
                             </li>
                         </c:forEach>
-
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="show.html">
-                                <div class="img">
-                                    <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
-                                </div>
-                                <div class="text">
-                                    <h3>莎金氏Sergeant's 鸡肉哑铃零食</h3>
-                                    <h4>鸡肉包裹着牛皮棒</h4>
-                                    <p><b>￥16.80 </b> <span>￥16.80</span></p>
-                                </div>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>

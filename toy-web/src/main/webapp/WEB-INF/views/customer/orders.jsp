@@ -27,26 +27,49 @@
             <h2>下单购买</h2>
             <table id="cartTable" cellpadding="0" cellspacing="0">
                 <tbody id="cartData">
+                <c:forEach  items="${toys}" var="toys">
                     <tr>
-                    <td class="goods"><a href="show.html" target="_blank"><img src="img/index_new_img1.jpg" alt=""/></a><span><a href="show.html" target="_blank">包郵三朵彩色許願樹盆栽擺件羊毛氈戳</a></span><b>颜色分类：红色</b></td>
+                    <td class="goods"><a href="show.html" target="_blank"><img src="img/index_new_img1.jpg" alt=""/></a><span><a href="show.html" target="_blank">${toys.toysInfoBean.decription}</a></span><b>颜色分类：红色</b></td>
                     <td class="price">
-                    <h3>市场价格：￥165.60</h3>
-                    <h4>价　　格：<span>￥<span class="unit_price">138.00</span><span></h4>
+                    <h3>市场价格：￥${toys.toysInfoBean.price }</h3>
+                    <h4>价　　格：<span>￥<span class="unit_price">${toys.toysInfoBean.price}</span></span></h4>
                     </td>
-                    <td class="quantity-form2">
-                    <a class="decrement operationSubt">-</a>
-                    <input class="quantity-text" value="1" type="text">
-                    <a class="increment operationAdd">+</a>
-                    <p class="fl">库存<span class="stock">6</span>件</p>
+                    <td class="">
+                    <h3>购买数量：${toys.number}</h3>
+                    <p class="fl">库存<span class="stock">${toys.toysInfoBean.num}</span>件</p>
                     </td>
-                    <td class="subtotalPeice">￥138.00</td>
-                    <td class="operation">
-                    <a class="pay" href="###">购买</a>
-                    <a class="delete" href="javascript:;">删除</a>
-                    </td>
+                    <td class="subtotalPeice">￥${toys.toysInfoBean.price }*${toys.number}</td>
                     </tr>
+                </c:forEach>
                 </tbody>
             </table>
+        </div>
+        <div>
+            <h2>选择地址</h2>
+            <table  cellpadding="0" cellspacing="0">
+                <tr>
+                    <td></td>
+                    <td>联系人</td>
+                    <td>地址</td>
+                    <td>手机号</td>
+                </tr>
+                <c:forEach items="${address}" var="address">
+                    <tr>
+                        <td><input type="radio" /></td>
+                        <td>${address.contact}</td>
+                        <td>${address.address}</td>
+                        <td>${address.mobile}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+        <div class="beizhu">
+            <span>添加备注：</span><textarea></textarea>
+        </div>
+        <h2>合计：<span class="fr">￥59</span></h2>
+        <div class="btns fr">
+            <button id="reset" type="reset" class="fr">取消</button>
+            <button id="submitGo" type="submit" class="fr">提交付款</button>
         </div>
     </div>
 </div>
@@ -55,5 +78,8 @@
 <%@include file="_down.jsp"%>
 <script type="text/javascript" src="${ctx}/static/js/plugins/layer/layer.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/plugins/common/commons.js"></script>
+<script>
+
+</script>
 </body>
 </html>

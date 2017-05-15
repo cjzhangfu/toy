@@ -24,18 +24,15 @@
 						  <a class="prev">︿</a>
 						  <div class="items">
 							<ul>
-							  <li><img alt="" bimg="${ctx}/static/img/p1.jpg" src="${ctx}/static/img/p1.jpg" onmousemove="preview(this);"></li>
-							  <li><img alt="" bimg="${ctx}/static/img/show_img1_b.jpg" src="${ctx}/static/img/show_img1_b.jpg" onmousemove="preview(this);"></li>
-							  <li><img alt="" bimg="${ctx}/static/img/show_img2_b.jpg" src="${ctx}/static/img/show_img2_b.jpg" onmousemove="preview(this);"></li>
-							  <li><img alt="" bimg="${ctx}/static/img/show_img1_b.jpg" src="${ctx}/static/img/show_img1_b.jpg" onmousemove="preview(this);"></li>
-							  <li><img alt="" bimg="${ctx}/static/img/show_img2_b.jpg" src="${ctx}/static/img/show_img2_b.jpg" onmousemove="preview(this);"></li>
-							  <li><img alt="" bimg="${ctx}/static/img/show_img1_b.jpg" src="${ctx}/static/img/show_img1_b.jpg" onmousemove="preview(this);"></li>
+								<c:forEach items="${fn:split(toys.picture,',')}" var="items">
+									<li><img alt="" bimg="/uploadImage/${items}" src="/uploadImage/${items}" onmousemove="preview(this);"></li>
+								</c:forEach>
 							</ul>
 						  </div>
 						  <a class="next">﹀</a>
 					</div>
 					<!--缩图结束-->
-					<div id="preview" class="spec-preview"> <span class="jqzoom"><img jqimg="${ctx}/static/img/show_img1_b.jpg" src="${ctx}/static/img/show_img1_b.jpg" /></span> </div>
+					<div id="preview" class="spec-preview"> <span class="jqzoom"><img jqimg="/uploadImage/${fn:split(toys.picture,',')[0]}" src="/uploadImage/${fn:split(toys.picture,',')[0]}" /></span> </div>
 				</div>
 				<div class="text">
 					<input type="hidden" id="toysId"value="${toys.id}">
@@ -144,7 +141,9 @@
 				<div class="right fr">
 					<h2>产品详情</h2>
 					<div class="con">
-						<img src="${ctx}/static/img/show_con_img.jpg" alt=""/>
+						<c:forEach items="${fn:split(toys.picture,',')}" var="items">
+							<img src="/uploadImage/${items}" alt=""/>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
@@ -158,7 +157,31 @@
 	function buy(){
 		var toysId=$("#toysId").val();
 		var toysNum=$("#toysNum").val();
-		window.location.href="${ctx}/orders/buy?toys_id="+toysId+"&number="+toysNum;
+		console.log(toysId,toysNum);
+		var datas=[
+			{
+				toys_id:toysId,
+				number:toysNum
+			}
+		];
+		$.ajax({
+			url: "${ctx}/orders/buyData",
+			type: "post",
+			data: JSON.stringify(datas),
+			cache: false,
+			contentType: "application/json",
+			dataType:'json',
+			success: function (data) {
+				if(data.status=="success"){
+					window.location.href="${ctx}/orders/buy";
+				}else{
+					layer.alert("请先登录！")
+				}
+			},
+			error: function (xhr) {
+
+			}
+		})
 	}
 </script>
 </body>

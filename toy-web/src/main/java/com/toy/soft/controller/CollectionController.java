@@ -74,4 +74,17 @@ public class CollectionController {
        }
         return "customer/collection";
     }
+    @RequestMapping(value = "delectBykey",method = RequestMethod.POST)
+    public @ResponseBody JsonMessage<String> delectBykey(String toysid){
+        JsonMessage<String> result = new JsonMessage<>();
+        try{
+            collectionInfoService.deleteBykey(toysid);
+            result.setStatus(OperateResult.SUCCESS.toString());
+            result.setData("删除成功！");
+        }catch(Exception e){
+            result.setStatus(OperateResult.FALLED.toString());
+            result.setErrorMsg("删除失败");
+        }
+        return result;
+    }
 }

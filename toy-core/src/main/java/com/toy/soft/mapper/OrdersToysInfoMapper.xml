@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.toy.soft.mapper.OrdersToysInfoMapper">
+    <resultMap id="BaseResultMap" type="com.toy.soft.entity.OrdersToysInfoBean">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="toys_id" property="toys_id" jdbcType="VARCHAR"/>
+        <result column="orders_id" property="orders_id" jdbcType="VARCHAR"/>
+        <result column="number" property="number" jdbcType="INTEGER"/>
+    </resultMap>
+    <insert id="insert" parameterType="java.util.List">
+        INSERT INTO t_toys_orders (id,toys_id,orders_id,number)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.toys_id},#{item.orders_id},#{item.number})
+        </foreach>
+    </insert>
+    <select id="findByOrdersId" resultMap="BaseResultMap">
+        select * from t_toys_orders WHERE orders_id=#{orders_id,jdbcType=VARCHAR};
+    </select>
+</mapper>

@@ -93,7 +93,8 @@
         ajax(params,function (data) {
             console.log(data);
             layer.msg('修改成功!',{icon:1,time:1000});
-            layer.close();
+            parent.location.reload();
+            parent.layer.closeAll();
         })
     }
 </script>

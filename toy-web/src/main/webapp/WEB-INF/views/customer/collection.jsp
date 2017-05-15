@@ -47,8 +47,7 @@
                     <h4>价　　格：<span>￥<span class="unit_price">${toys.price}</span></span></h4>
                     </td>
                     <td class="operation">
-                        <a class="pay" href="###">购买</a>
-                        <a class="delete" href="javascript:;">删除</a>
+                        <a class="delete" href="javascript:;" onclick="delect(this)" id="${toys.id}">删除</a>
                     </td>
                     </tr>
                 </c:forEach>
@@ -62,5 +61,20 @@
 <%@include file="_down.jsp"%>
 <script type="text/javascript" src="${ctx}/static/js/plugins/layer/layer.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/plugins/common/commons.js"></script>
+<script>
+    function delect(opt){
+        var toys_id=$(opt).attr("id")
+        var params={
+            url:"${ctx}/collection/delectBykey",
+            method:"post",
+            data:{
+                toysid:toys_id
+            }
+        }
+        ajax(params,function(data){
+            layer.alert(data);
+        })
+    }
+</script>
 </body>
 </html>

@@ -106,7 +106,7 @@
     function typeName_add(){
         layer.open({
             type: 2,
-            title: "增加用户",
+            title: "增加玩具类型",
             content: place+'/typeName/add',
             area: ['640px', '420px']
         });
@@ -134,7 +134,7 @@
         var typeName =$(obj).parents("tr").find("td").eq(2).text();
         layer.open({
             type: 2,
-            title: "编辑用户",
+            title: "编辑玩具类型",
             content: place+'/typeName/typeName_update?id='+id+'&typeName='+typeName,
             area: ['640px', '420px']
         });
