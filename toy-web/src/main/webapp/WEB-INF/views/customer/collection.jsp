@@ -28,17 +28,17 @@
                 <img src="${ctx}/static/img/user_photo.jpg"/>
             </div>
             <ul>
-                <li><a  class="on" href="${ctx}/cart">我的购物车<span>></span></a></li>
+                <li><a  href="${ctx}/cart">我的购物车<span>></span></a></li>
                 <li><a href="user.html">已买到的商品<span>></span></a></li>
                 <li><a  href="${ctx}/personCenter">地址信息<span>></span></a></li>
-                <li><a  href="${ctx}/collection/collectionData">个人收藏<span>></span></a></li>
+                <li><a  class="on" href="${ctx}/collection/collectionData">个人收藏<span>></span></a></li>
             </ul>
         </div>
         <div class="right fr">
             <h2>我的收藏</h2>
             <table id="cartTable" cellpadding="0" cellspacing="0">
                 <tbody id="cartData">
-                <c:forEach items="toys" var="toys">
+                <c:forEach items="${toys}" var="toys">
                     <tr>
                     <td class="goods"><a href="show.html" target="_blank"><img src="/uploadImage/${toys.picture}" alt=""/></a><span><a href="show.html" target="_blank">${toys.decription}</a></span><b>颜色分类：红色</b></td>
                     <td class="price">

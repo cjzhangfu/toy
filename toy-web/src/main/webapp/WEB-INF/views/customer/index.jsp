@@ -115,12 +115,13 @@
                             <li>
                                 <a href="${ctx}/toy/toyDetail?id=${toys.id}">
                                     <div class="img">
-                                        <img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>
+                                        <%--<img src="${ctx}/static/img/index_new_img1.jpg" alt=""/>--%>
+                                            <img src="${ctx}/static/img/p1.jpg" alt=""/>
                                     </div>
                                     <div class="text">
                                         <h3>${toys.name}</h3>
                                         <h4>${toys.decription}</h4>
-                                        <p><b>￥${toys.price}</b>￥${toys.price}</span></p>
+                                        <p><b>￥${toys.price}</b><span>￥${toys.price}</span></p>
                                     </div>
                                 </a>
                             </li>

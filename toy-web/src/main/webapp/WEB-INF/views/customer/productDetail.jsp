@@ -24,8 +24,7 @@
 						  <a class="prev">︿</a>
 						  <div class="items">
 							<ul>
-							  <li><img alt="" bimg="${ctx}/static/img/show_img1_b.jpg" src="${ctx}/static/ img/show_img1_b.jpg" onmousemove="preview(this);"></li>
-							  <li><img alt="" bimg="${ctx}/static/img/show_img2_b.jpg" src="${ctx}/static/img/show_img2_b.jpg" onmousemove="preview(this);"></li>
+							  <li><img alt="" bimg="${ctx}/static/img/p1.jpg" src="${ctx}/static/img/p1.jpg" onmousemove="preview(this);"></li>
 							  <li><img alt="" bimg="${ctx}/static/img/show_img1_b.jpg" src="${ctx}/static/img/show_img1_b.jpg" onmousemove="preview(this);"></li>
 							  <li><img alt="" bimg="${ctx}/static/img/show_img2_b.jpg" src="${ctx}/static/img/show_img2_b.jpg" onmousemove="preview(this);"></li>
 							  <li><img alt="" bimg="${ctx}/static/img/show_img1_b.jpg" src="${ctx}/static/img/show_img1_b.jpg" onmousemove="preview(this);"></li>
@@ -57,7 +56,7 @@
                     </h3>
 
 					<div class="button">
-                    	<div class="pay"><a href="###">立即购买</a></div>
+                    	<div class="pay"><a href="javascript:;" onclick="buy()">立即购买</a></div>
                         <div class="add_cart"><img src="${ctx}/static/img/show_img1_b.jpg" width="25" height="25" alt="" /><a onClick="MoveBox(this)" href="javascript:;">加入购物车</a></div>
                     </div>
 				</div>
@@ -155,5 +154,12 @@
 	<%@include file="_down.jsp"%>
 <script type="text/javascript" src="${ctx}/static/js/plugins/layer/layer.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/plugins/common/commons.js"></script>
+<script>
+	function buy(){
+		var toysId=$("#toysId").val();
+		var toysNum=$("#toysNum").val();
+		window.location.href="${ctx}/orders/buy?toys_id="+toysId+"&number="+toysNum;
+	}
+</script>
 </body>
 </html>

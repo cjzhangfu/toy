@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.toy.soft.mapper.AddressInfoMapper">
+    <resultMap id="BaseResultMap" type="com.toy.soft.entity.AddressInfoBean">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="contact" property="contact" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="mbr_id" property="mbr_id" jdbcType="VARCHAR"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.toy.soft.entity.AddressInfoBean">
+        INSERT  INTO t_address(id,contact,address,mobile,mbr_id)
+        VALUES (#{id,jdbcType=VARCHAR},#{contact,jdbcType=VARCHAR},
+        #{address,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR},#{mbr_id,jdbcType=VARCHAR})
+    </insert>
+    <delete id="deleteBykey" parameterType="String">
+        DELETE FROM t_address WHERE id=#{id,jdbcType=VARCHAR}
+    </delete>
+    <update id="updateBykey" parameterType="com.toy.soft.entity.AddressInfoBean">
+        UPDATE t_address
+        SET contact=#{contact,jdbcType=VARCHAR},
+        address=#{address,jdbcType=VARCHAR},
+        mobile=#{mobile,jdbcType=VARCHAR},
+        mbr_id=#{mbr_id,jdbcType=VARCHAR}
+        WHERE id=#{id,jdbcType=VARCHAR}
+    </update>
+    <select id="selectByUserId" resultMap="BaseResultMap">
+        SELECT * FROM  t_address WHERE  mbr_id=#{mbr_id,jdbcType=VARCHAR}
+    </select>
+    <select id="select" resultMap="BaseResultMap">
+        SELECT * FROM  t_address
+    </select>
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT  * FROM  t_address WHERE id=#{id,jdbcType=VARCHAR}
+    </select>
+</mapper>

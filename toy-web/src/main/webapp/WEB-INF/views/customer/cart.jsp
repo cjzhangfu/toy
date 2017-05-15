@@ -32,7 +32,7 @@
 				<ul>
 					<li><a  class="on" href="${ctx}/cart">我的购物车<span>></span></a></li>
 					<li><a href="user.html">已买到的商品<span>></span></a></li>
-					<li><a  href="${ctx}/personCenter">地址信息<span>></span></a></li>
+					<li><a  href="${ctx}/address/addressInfo">地址信息<span>></span></a></li>
 					<li><a  href="${ctx}/collection/collectionData">个人收藏<span>></span></a></li>
 				</ul>
 			</div>

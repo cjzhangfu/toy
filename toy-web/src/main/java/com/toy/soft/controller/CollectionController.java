@@ -70,7 +70,7 @@ public class CollectionController {
            System.out.println(toys.get(0).toString());
            model.addAttribute("toys",toys);
        }catch(Exception e){
-           System.out.println(89898);
+           logger.error(e.getMessage());
        }
         return "customer/collection";
     }

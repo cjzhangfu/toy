@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.toy.soft.mapper.OrdersInfoMapper">
+    <resultMap id="BaseResultMap" type="com.toy.soft.entity.OrdersInfoBean">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="number" property="number" jdbcType="VARCHAR"/>
+        <result column="byer_id" property="byer_id" jdbcType="VARCHAR"/>
+        <result column="total_amount" property="total_amount" jdbcType="INTEGER"/>
+        <result column="total_price" property="total_price" jdbcType="INTEGER"/>
+        <result column="payment_price" property="payment_price" jdbcType="INTEGER"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="creat_time" property="creat_time" jdbcType="DATE"/>
+        <result column="payment_time" property="payment_time" jdbcType="DATE"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="address_id" property="address_id" jdbcType="VARCHAR"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.toy.soft.entity.OrdersInfoBean">
+        INSERT INTO t_orders(id,number,byer_id,total_amount,total_price,
+        payment_price,remark,creat_time,payment_time,status,address_id)
+        VALUES (#{id,jdbcType=VARCHAR},#{number,jdbcType=VARCHAR},#{byer_id,jdbcType=VARCHAR},#{total_amount,jdbcType=INTEGER},
+        #{total_price,jdbcType=INTEGER},#{payment_price,jdbcType=INTEGER},#{remark,jdbcType=VARCHAR},
+        #{creat_time,jdbcType=DATE},#{payment_time,jdbcType=DATE},#{status,jdbcType=VARCHAR},#{address_id,jdbcType=VARCHAR})
+    </insert>
+    <delete id="delectBykey" parameterType="String">
+        DELETE FROM t_orders  WHERE  id=#{id,jdbcType=VARCHAR}
+    </delete>
+    <update id="updateBykey" parameterType="String">
+        UPDATE t_orders
+        SET number=#{number,jdbcType=VARCHAR},
+        byer_id=#{byer_id,jdbcType=VARCHAR},
+        total_amount=#{total_amount,jdbcType=INTEGER},
+        total_price=#{total_price,jdbcType=INTEGER},
+        payment_price=#{payment_price,jdbcType=INTEGER},
+        remark=#{remark,jdbcType=VARCHAR},
+        creat_time=#{creat_time,jdbcType=DATE},
+        payment_time=#{payment_time,jdbcType=DATE},
+        status=#{status,jdbcType=VARCHAR},
+        address_id=#{address_id,jdbcType=VARCHAR}
+        WHERE id=#{id,jdbcType=VARCHAR}
+    </update>
+    <select id="select" resultMap="BaseResultMap">
+        SELECT * FROM t_orders
+    </select>
+</mapper>
