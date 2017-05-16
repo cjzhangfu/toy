@@ -24,7 +24,7 @@
     <delete id="delectBykey" parameterType="String">
         DELETE FROM t_orders  WHERE  id=#{id,jdbcType=VARCHAR}
     </delete>
-    <update id="updateBykey" parameterType="String">
+    <update id="updateBykey" parameterType="com.toy.soft.entity.OrdersInfoBean">
         UPDATE t_orders
         SET number=#{number,jdbcType=VARCHAR},
         byer_id=#{byer_id,jdbcType=VARCHAR},
@@ -41,4 +41,9 @@
     <select id="select" resultMap="BaseResultMap">
         SELECT * FROM t_orders
     </select>
+    <select id="selectByKey" resultMap="BaseResultMap">
+        SELECT * FROM t_orders WHERE
+        id=#{id,jdbcType=VARCHAR}
+</select>
+
 </mapper>

@@ -28,4 +28,7 @@ public class OrdersInfoService {
     public List<OrdersInfoBean> select(){
         return mapper.select();
     }
+    public OrdersInfoBean selectByKey(String key){
+        return mapper.selectByKey(key);
+    }
 }

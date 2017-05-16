@@ -112,14 +112,25 @@
             contentType: "application/json",
             dataType:'json',
             success: function (data) {
+                console.log(data);
                 if(data.status=="success"){
                     layer.open({
                         title:"支付",
-                        content:"确认支付￥"+data,
+                        content:"确认支付￥"+data.data[0],
                         btn:['确认','取消'],
                         yes:function (index) {
-                            layer.msg("支付成功！",{icon:1,time:1000})
-                            layer.close(index);
+                            var findId = data.data[1];
+                            var params={
+                                url:"${ctx}/orders/payMoney",
+                                method:"post",
+                                data:{
+                                    id:findId
+                                }
+                            }
+                            ajax(params,function (datass) {
+                                layer.msg("支付成功！",{time:1000})
+                                layer.close(index);
+                            })
                         }
                     })
                 }else{
@@ -132,7 +143,6 @@
         })
 
     })
-
 </script>
 </body>
 </html>

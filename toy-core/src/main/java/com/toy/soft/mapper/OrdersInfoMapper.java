@@ -36,4 +36,5 @@ public interface OrdersInfoMapper {
      * @return
      */
     List<OrdersInfoBean> select();
+    OrdersInfoBean selectByKey(String id);
 }

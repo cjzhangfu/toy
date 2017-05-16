@@ -8,6 +8,7 @@ import com.toy.soft.service.OrdersInfoService;
 import com.toy.soft.service.OrdersToysInfoService;
 import com.toy.soft.service.ToysInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -64,34 +65,67 @@ public class OrdersController {
     }
     @RequestMapping(value = "/payFor",method = RequestMethod.POST)
     public
-    @ResponseBody JsonMessage<Integer> payFor(@RequestBody OrdersInfoBean ordersInfoBean,HttpServletRequest request){
-        JsonMessage<Integer> result = new JsonMessage<>();
+    @ResponseBody JsonMessage<List<String>> payFor(@RequestBody OrdersInfoBean ordersInfoBean,HttpServletRequest request){
+        JsonMessage<List<String>> result = new JsonMessage<>();
         try{
         String currentId= UUID.randomUUID().toString();
         UserInfoBean user= (UserInfoBean) request.getSession().getAttribute("user");
-        String numbers=new Date(System.currentTimeMillis()).toString();
+        String numbers=String.valueOf(System.currentTimeMillis());
         ordersInfoBean.setId(currentId);
         ordersInfoBean.setNumber(numbers);
         ordersInfoBean.setByer_id(user.getId());
         ordersInfoBean.setCreat_time(new Date());
         ordersInfoBean.setStatus("未支付");
-            List<OrdersToysInfoBean> contant=new ArrayList<>();
-            for(int i=0;i<ordersInfoBean.getList().size();i++){
-                OrdersToysInfoBean infoBean=new OrdersToysInfoBean();
-                String current= UUID.randomUUID().toString();
-                infoBean.setId(current);
-                infoBean.setOrders_id(currentId);
-                infoBean.setToys_id(ordersInfoBean.getList().get(i).getId());
-                infoBean.setNumber(ordersInfoBean.getList().get(i).getToysNum());
-                contant.add(infoBean);
-            }
-            infoService.addByList(contant);
-            result.setStatus(OperateResult.SUCCESS.toString());
-            result.setData(ordersInfoBean.getTotal_price());
+        ordersInfoService.addOrders(ordersInfoBean);
+        List<OrdersToysInfoBean> contant=new ArrayList<>();
+        for(int i=0;i<ordersInfoBean.getList().size();i++){
+            OrdersToysInfoBean infoBean=new OrdersToysInfoBean();
+            String current= UUID.randomUUID().toString();
+            infoBean.setId(current);
+            infoBean.setOrders_id(currentId);
+            infoBean.setToys_id(ordersInfoBean.getList().get(i).getId());
+            infoBean.setNumber(ordersInfoBean.getList().get(i).getToysNum());
+            contant.add(infoBean);
+        }
+        infoService.addByList(contant);
+        List<String> listData=new ArrayList<>();
+        listData.add(ordersInfoBean.getTotal_price().toString());
+        listData.add(currentId);
+        result.setStatus(OperateResult.SUCCESS.toString());
+        result.setData(listData);
         }catch(Exception e){
             result.setStatus(OperateResult.FALLED.toString());
             result.setErrorMsg("提交订单失败！");
         }
         return result;
     }
+    @RequestMapping(value = "payMoney",method = RequestMethod.POST)
+    public @ResponseBody JsonMessage<String> payMoney(String id){
+        JsonMessage<String> result=new JsonMessage<>();
+        try{
+            OrdersInfoBean orders=ordersInfoService.selectByKey(id);
+            orders.setPayment_time(new Date());
+            orders.setPayment_price(orders.getTotal_price());
+            orders.setStatus("已付款!");
+            ordersInfoService.updateOrders(orders);
+            result.setStatus(OperateResult.SUCCESS.toString());
+            result.setStatus("支付成功！");
+        }catch(Exception e){
+            result.setStatus(OperateResult.FALLED.toString());
+            result.setErrorMsg("支付失败！");
+        }
+        return result;
+    }
+    @RequestMapping("myorders")
+    public String myorders(){
+        return "customer/myorders";
+    }
+    @RequestMapping(value = "myordersData",method = RequestMethod.GET)
+    public @ResponseBody  JsonMessage<String>myordersData(HttpServletRequest request){
+        JsonMessage<String> result = new JsonMessage<>();
+        UserInfoBean user= (UserInfoBean) request.getSession().getAttribute("user");
+        return null;
+
+    }
+
 }
