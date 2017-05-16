@@ -28,8 +28,15 @@ public class IndexController {
         pageQuery.setPageNum(1);
         pageQuery.setPageSize(12);
         PageInfo<ToysInfoBean> pageInfo=toysInfoService.selectByPage(pageQuery);
+        PageQuery hotePage =new PageQuery();
+        hotePage.setPageNum(1);
+        hotePage.setPageSize(6);
+        PageInfo<ToysInfoBean> pageInfo1=toysInfoService.selectByPage(hotePage);
         if(pageInfo!=null&&pageInfo.getList()!=null&&pageInfo.getList().size()>0){
             model.addAttribute("toys",pageInfo.getList());
+        }
+        if(pageInfo1!=null&&pageInfo1.getList()!=null&&pageInfo1.getList().size()>0){
+            model.addAttribute("hotToys",pageInfo1.getList());
         }
         logger.info(pageInfo.getList().toString());
         return "customer/index";

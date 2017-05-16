@@ -93,7 +93,7 @@
         var id=$(obj).attr("id");
         var index = layer.open({
             type: 2,
-            title: '添加地址信息 ',
+            title: '修改地址信息 ',
             content: '${ctx}/address/address_edit?id='+id,
             area: ['680px', '500px']
         });

@@ -16,7 +16,7 @@
 </script>
 
 </head>
-
+<script src="${ctx}/static/js/orders.js"></script>
 <body>
 <%@include file="_head.jsp"%>
 
@@ -29,16 +29,19 @@
                 <tbody id="cartData">
                 <c:forEach  items="${toys}" var="toys">
                     <tr>
-                    <td class="goods"><a href="show.html" target="_blank"><img src="img/index_new_img1.jpg" alt=""/></a><span><a href="show.html" target="_blank">${toys.toysInfoBean.decription}</a></span><b>颜色分类：红色</b></td>
+                        <input type="hidden" class="toys_ids" value="${toys.toysInfoBean.id}"/>
+                    <td class="goods"><a href="show.html" target="_blank"><img src="/uploadImage/${fn:split(toys.toysInfoBean.picture,',')[0]}" alt=""/></a><span><a href="show.html" target="_blank">${toys.toysInfoBean.decription}</a></span><b>颜色分类：红色</b></td>
                     <td class="price">
                     <h3>市场价格：￥${toys.toysInfoBean.price }</h3>
                     <h4>价　　格：<span>￥<span class="unit_price">${toys.toysInfoBean.price}</span></span></h4>
                     </td>
-                    <td class="">
-                    <h3>购买数量：${toys.number}</h3>
-                    <p class="fl">库存<span class="stock">${toys.toysInfoBean.num}</span>件</p>
-                    </td>
-                    <td class="subtotalPeice">￥${toys.toysInfoBean.price }*${toys.number}</td>
+                        <td class="quantity-form2">
+                        <a class="decrement operationSubt">-</a>
+                        <input class="quantity-text" value="${toys.number}" type="text" readonly="readonly">
+                        <a class="increment operationAdd">+</a>
+                        <p class="fl">库存<span class="stock">${toys.toysInfoBean.num}</span>件</p>
+                        </td>
+                        <td class="subtotalPeice">￥<span>${toys.number*toys.toysInfoBean.price}</span></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -55,7 +58,7 @@
                 </tr>
                 <c:forEach items="${address}" var="address">
                     <tr>
-                        <td><input type="radio" /></td>
+                        <td><input type="radio" name="radio" value="${address.id}"/></td>
                         <td>${address.contact}</td>
                         <td>${address.address}</td>
                         <td>${address.mobile}</td>
@@ -64,7 +67,7 @@
             </table>
         </div>
         <div class="beizhu">
-            <span>添加备注：</span><textarea></textarea>
+            <span>添加备注：</span><textarea id="remark"></textarea>
         </div>
         <h2>合计：<span class="fr">￥59</span></h2>
         <div class="btns fr">
@@ -79,6 +82,56 @@
 <script type="text/javascript" src="${ctx}/static/js/plugins/layer/layer.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/plugins/common/commons.js"></script>
 <script>
+    $("#submitGo").click(function(){
+        var datas=[]
+        var index=$("#cartData").find('tr').length;
+        var total_amount=0;
+        var total_price=0;
+        for(var i=0;i<index;i++){
+            total_amount+=parseInt($("#cartData").find('tr').eq(i).find(".quantity-text").val());
+            total_price+=parseInt($("#cartData").find('tr').eq(i).find(".subtotalPeice span").text())
+            datas.push({
+                id:$("#cartData").find('tr').eq(i).find(".toys_ids").val(),
+            ToysNum:$("#cartData").find('tr').eq(i).find(".quantity-text").val()
+            })
+        }
+        var addressId=$("input[name='radio']:checked").val();
+        var remark=$("#remark").text();
+        var data={
+            list:datas,
+            total_amount:total_amount,
+            total_price:total_price,
+            address_id:addressId,
+            remark:remark
+        }
+        $.ajax({
+            url: "${ctx}/orders/payFor",
+            type: "post",
+            data: JSON.stringify(data),
+            cache: false,
+            contentType: "application/json",
+            dataType:'json',
+            success: function (data) {
+                if(data.status=="success"){
+                    layer.open({
+                        title:"支付",
+                        content:"确认支付￥"+data,
+                        btn:['确认','取消'],
+                        yes:function (index) {
+                            layer.msg("支付成功！",{icon:1,time:1000})
+                            layer.close(index);
+                        }
+                    })
+                }else{
+
+                }
+            },
+            error: function (xhr) {
+
+            }
+        })
+
+    })
 
 </script>
 </body>

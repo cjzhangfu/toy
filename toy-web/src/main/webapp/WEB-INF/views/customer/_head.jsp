@@ -23,7 +23,7 @@
         <div class="logo fl"><a class="bl" href="index.html"><img src="${ctx}/static/img/index_logo.png" alt=""></a></div>
         <div class="search_box fr">
             <form>
-                <input id="search" class="search" type="text" placeholder="宠物罐头   磨牙棒   满额立减"/>
+                <input id="search" class="search" type="text" placeholder="变形金刚   钢琴   满额立减"/>
                 <input class="submit" type="submit" value="" />
             </form>
         </div>

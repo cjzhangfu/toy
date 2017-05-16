@@ -15,6 +15,7 @@ public class ToysInfoBean {
     private String decription;
     private String picture;
     private Integer ishot;
+    private Integer ToysNum;
 
     public Integer getNum() {
         return num;
@@ -102,5 +103,13 @@ public class ToysInfoBean {
 
     public void setIshot(Integer ishot) {
         this.ishot = ishot;
+    }
+
+    public Integer getToysNum() {
+        return ToysNum;
+    }
+
+    public void setToysNum(Integer toysNum) {
+        ToysNum = toysNum;
     }
 }

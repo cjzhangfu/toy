@@ -5,7 +5,7 @@ $(function(){
 		$(".quantity-text").val(1);
 		
 		//商品数量增减
-		$(".operationAdd").click(function(){
+		$(document).on("click",".operationAdd",function(){
 			var n = $(this).parent().find(".stock").text();
 			var t = $(this).parent().find($(".quantity-text")); 
 			t.val(parseInt(t.val())+1);
@@ -16,7 +16,7 @@ $(function(){
 			} 
 			setTotal(this);
 		}); 
-		$(".operationSubt").click(function(){ 
+		$(document).on("click",".operationSubt",function(){
 			var n = $(this).parent().find(".stock").text();
 			var t=$(this).parent().find($(".quantity-text")); 
 			t.val(parseInt(t.val())-1);
@@ -63,7 +63,7 @@ $(function(){
 		}
 		
 		//删除
-		$(".delete").click(function(){ 
+		$(document).on("click",".delete",function(){
 			if(confirm('您确定要删除此商品?')){
 				$(this).parents("tr").remove();
 			}
@@ -78,8 +78,9 @@ $(function(){
 		ajax(params,function (data) {
 			var html="";
 			$.each(data,function (i,v) {
+				var pic=(v.toysInfoBean.picture).split(",");
 				html+='<tr>'+
-				'<td class="goods"><a href="show.html" target="_blank"><img src="'+/uploadImage/+v.toysInfoBean.picture+'" alt=""/></a><span><a href="show.html" target="_blank">'+v.toysInfoBean.decription+'</a></span><b>颜色分类：红色</b></td>'+
+				'<td class="goods"><a href="show.html" target="_blank"><img src="'+/uploadImage/+pic[0]+'" alt=""/></a><span><a href="show.html" target="_blank">'+v.toysInfoBean.decription+'</a></span><b>颜色分类：红色</b></td>'+
 				'<td class="price">'+
 				'<h3>市场价格:￥'+v.toysInfoBean.price+'</h3>'+
 				'<h4>价　　格：<span>￥<span class="unit_price">'+v.toysInfoBean.price+'</span><span></h4>'+

@@ -1,6 +1,7 @@
 package com.toy.soft.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by fu on 2017/4/12.
@@ -17,6 +18,7 @@ public class OrdersInfoBean {
     private Date payment_time;
     private String status;
     private String address_id;
+    private List<ToysInfoBean> list;
 
     public String getId() {
         return id;
@@ -104,5 +106,13 @@ public class OrdersInfoBean {
 
     public void setAddress_id(String address_id) {
         this.address_id = address_id;
+    }
+
+    public List<ToysInfoBean> getList() {
+        return list;
+    }
+
+    public void setList(List<ToysInfoBean> list) {
+        this.list = list;
     }
 }

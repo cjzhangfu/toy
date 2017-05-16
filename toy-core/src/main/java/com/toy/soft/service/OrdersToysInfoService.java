@@ -2,6 +2,7 @@ package com.toy.soft.service;
 
 import com.toy.soft.entity.OrdersToysInfoBean;
 import com.toy.soft.mapper.OrdersToysInfoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  */
 @Service
 public class OrdersToysInfoService {
+    @Autowired
     private OrdersToysInfoMapper mapper;
     public void addByList(List<OrdersToysInfoBean> list){
         mapper.insert(list);

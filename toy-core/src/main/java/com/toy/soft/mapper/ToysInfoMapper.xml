@@ -58,6 +58,6 @@
         <foreach item="item" collection="list"
                  open="(" separator="," close=")">
             #{item}
-        </foreach> ;
+        </foreach>
     </select>
 </mapper>
