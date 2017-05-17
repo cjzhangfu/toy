@@ -80,7 +80,9 @@ $(function(){
 			$.each(data,function (i,v) {
 				var pic=(v.toysInfoBean.picture).split(",");
 				html+='<tr>'+
-				'<td class="goods"><a href="show.html" target="_blank"><img src="'+/uploadImage/+pic[0]+'" alt=""/></a><span><a href="show.html" target="_blank">'+v.toysInfoBean.decription+'</a></span><b>颜色分类：红色</b></td>'+
+				'<td><input type="hidden" value="'+v.toysInfoBean.id+'">'+
+				'<td><input type="checkbox" name="checkeds"/></td>'+
+				'<td class="goods"><a href='+place+'"/toy/toyDetail?id='+v.toysInfoBean.id+'" target="_blank"><img src="'+/uploadImage/+pic[0]+'" alt=""/></a><span><a href="javascript:;" target="_blank">'+v.toysInfoBean.decription+'</a></span></td>'+
 				'<td class="price">'+
 				'<h3>市场价格:￥'+v.toysInfoBean.price+'</h3>'+
 				'<h4>价　　格：<span>￥<span class="unit_price">'+v.toysInfoBean.price+'</span><span></h4>'+
@@ -93,7 +95,6 @@ $(function(){
 				'</td>'+
 				'<td class="subtotalPeice">￥'+parseInt(v.num)*parseInt(v.toysInfoBean.price)+'</td>'+
 				'<td class="operation">'+
-				'<a class="pay" href="###">购买</a>'+
 				'<a class="delete" href="javascript:;">删除</a>'+
 				'</td>'+
 				'</tr>';
@@ -102,5 +103,37 @@ $(function(){
 		})
 	}
 	toyCart();
+
+	$("#submitGo").click(function () {
+		var index=$("#cartData").find("tr").length;
+		var datas=[];
+		for(var i=0;i<index;i++){
+			if($("#cartData").find("tr").eq(i).find("input[type='checkbox']").is(':checked')){
+				datas.push({
+					toys_id:$("#cartData").find("tr").eq(i).find("input[type='hidden']").val(),
+					number:$("#cartData").find("tr").eq(i).find(".quantity-text").val()
+				})
+			}
+		}
+		$.ajax({
+			url: place+"/orders/buyData",
+			type: "post",
+			data: JSON.stringify(datas),
+			cache: false,
+			contentType: "application/json",
+			dataType:'json',
+			success: function (data) {
+				if(data.status=="success"){
+					window.location.href=place+"/orders/buy";
+				}else{
+					layer.alert("请先登录！")
+				}
+			},
+			error: function (xhr) {
+
+			}
+		})
+	})
+
 	
 });

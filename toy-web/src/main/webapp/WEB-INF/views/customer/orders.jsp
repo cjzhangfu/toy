@@ -71,7 +71,7 @@
         </div>
         <h2>合计：<span class="fr" >￥<span id="toystotalPrices">59</span></span></h2>
         <div class="btns fr">
-            <button id="reset" type="reset" class="fr">取消</button>
+            <button id="reset" type="button" class="fr">取消</button>
             <button id="submitGo" type="submit" class="fr">提交付款</button>
         </div>
     </div>
@@ -82,6 +82,9 @@
 <script type="text/javascript" src="${ctx}/static/js/plugins/layer/layer.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/plugins/common/commons.js"></script>
 <script>
+    $("#reset").click(function(){
+        history.go(-1);
+    })
     $("#submitGo").click(function(){
         var datas=[]
         var index=$("#cartData").find('tr').length;
@@ -132,6 +135,9 @@
                                     window.location.href="${ctx}/orders/myorders";
                                 })
                             })
+                        },
+                        no:function (index) {
+                            window.location.href="${ctx}/orders/myorders";
                         }
                     })
                 }else{

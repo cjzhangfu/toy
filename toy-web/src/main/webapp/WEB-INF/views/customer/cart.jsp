@@ -169,6 +169,9 @@
 					  <%--</tr>--%>
 					</tbody>
 				  </table>
+				<div class="btns fr">
+				<button id="submitGo" type="button" class="fr">提交付款</button>
+				</div>
 			</div>
 		</div>
 	</div>

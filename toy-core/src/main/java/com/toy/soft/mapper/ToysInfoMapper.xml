@@ -60,9 +60,10 @@
             #{item}
         </foreach>
     </select>
-    <select id="selectMo" resultMap="BaseResultMap">
+    <select id="selectMo" parameterType="String" resultMap="BaseResultMap">
         select * from t_toys WHERE
-        (name LIKE  '%'#{types}'%')
-        OR (brand LIKE  '%'#{types}'%');
+        name LIKE  concat(concat('%',#{types,jdbcType=VARCHAR}),'%')
+        OR brand LIKE  concat(concat('%',#{types,jdbcType=VARCHAR}),'%')
+        OR type LIKE concat(concat('%',#{types,jdbcType=VARCHAR}),'%')
     </select>
 </mapper>

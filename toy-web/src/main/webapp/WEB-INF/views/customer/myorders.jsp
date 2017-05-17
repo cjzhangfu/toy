@@ -84,10 +84,11 @@
                             '<h3>购买数量：'+v.ordersToys[i].number+'</h3>'+
                             '<h3>价　　格：￥'+v.ordersToys[i].toysInfoBean.price+'</h3>'+
                             '</td>'+
-                            '</tr>'+
-                            '</tbody>'+
-                            '</table>'
+                            '</tr>'
                 }
+                    html+='</tbody>'+
+                    '</table>'
+
         })
         $(".first").html(html);
     })

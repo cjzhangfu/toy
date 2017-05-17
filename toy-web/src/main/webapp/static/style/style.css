@@ -842,7 +842,7 @@ input, textarea{-webkit-appearance: none; border-radius: 0; outline:none; border
 .cart table .quantity-form2 p{line-height:32px; color:#999;margin-left:10px;}
 .cart table .num span{font-size:14px;}
 .subtotalPeice{width:70px;color:#e12e34 !important;font-size:14px;}
-.operation a{color:#000; width:100%; display:block; line-height:25px; font-size:14px;}
+.operation a{color:#000; width: 36px; display:block; line-height:25px; font-size:14px;}
 /*-- 购物车 end --*/
 
 /*-- 个人中心-完善个人资料 begin --*/
@@ -1144,3 +1144,4 @@ input[type=radio]{-webkit-appearance:radio;width:15px;height:15px;}
 .cart table{border: 1px solid #ccc;}
 .cart.order table h3{text-align: left;}
 .cart.order table td.top{vertical-align: top;}
+input[type=checkbox]{-webkit-appearance:checkbox;width:15px;height:15px;}
