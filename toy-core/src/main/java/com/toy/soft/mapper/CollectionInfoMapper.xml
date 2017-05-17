@@ -11,7 +11,7 @@
         VALUES (#{id,jdbcType=VARCHAR},#{userid,jdbcType=VARCHAR},#{toysid,jdbcType=VARCHAR})
     </insert>
     <delete id="delectBykey" parameterType="String">
-        DELETE FROM t_collection WHERE id=#{id,jdbcType=VARCHAR}
+        DELETE FROM t_collection WHERE toysid=#{toysid,jdbcType=VARCHAR}
     </delete>
     <update id="updateBykey" parameterType="String">
         UPDATE t_collection SET
@@ -23,6 +23,8 @@
         SELECT * FROM t_collection
     </select>
     <select id="selectByUserId" parameterType="String" resultMap="BaseResultMap">
-        SELECT * FROM t_collection WHERE userid=#{userid,jdbcType=VARCHAR}
+        SELECT * FROM t_collection
+        WHERE
+        userid=#{userid,jdbcType=VARCHAR}
     </select>
 </mapper>

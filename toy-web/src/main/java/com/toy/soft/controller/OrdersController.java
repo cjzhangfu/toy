@@ -109,7 +109,7 @@ public class OrdersController {
             orders.setStatus("已付款");
             ordersInfoService.updateOrders(orders);
             result.setStatus(OperateResult.SUCCESS.toString());
-            result.setStatus("支付成功！");
+            result.setData("支付成功！");
         }catch(Exception e){
             result.setStatus(OperateResult.FALLED.toString());
             result.setErrorMsg("支付失败！");

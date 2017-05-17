@@ -1,4 +1,14 @@
 $(function(){
+
+    function totalPrice(){
+        var index=$("#cartData").find('tr').length;
+        var total_price=0;
+        for(var i=0;i<index;i++){
+            total_price+=parseInt($("#cartData").find('tr').eq(i).find(".subtotalPeice span").text())
+        }
+        console.log("2222");
+        $("#toystotalPrices").html(total_price);
+    }
 //购物车js
     $(".radio").click(function(){
 
@@ -59,6 +69,8 @@ $(function(){
         var unit_price = $(tr).parents("tr").find(".unit_price");
         var subtotalPeice = $(tr).parents("tr").find(".subtotalPeice");
         s += parseInt($(quantity).val())*parseFloat($(unit_price).text());
-        $(subtotalPeice).html('￥'+ s.toFixed(2));
+        $(subtotalPeice).html('￥<span>'+ s.toFixed(2)+'</span>');
+        totalPrice();
     }
+    totalPrice();
 });

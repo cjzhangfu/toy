@@ -11,7 +11,7 @@ import java.util.List;
 @MyBatisRepository
 public interface CollectionInfoMapper {
     int insert(CollectionInfoBean collectionInfoBean);
-    int delectBykey(String id);
+    int delectBykey(String toysid);
     int updateBykey(CollectionInfoBean collectionInfoBean);
     List<CollectionInfoBean> selectAll();
     List<CollectionInfoBean> selectByUserId(String userid);

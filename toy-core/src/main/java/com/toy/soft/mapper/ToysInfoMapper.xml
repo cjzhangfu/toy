@@ -60,4 +60,9 @@
             #{item}
         </foreach>
     </select>
+    <select id="selectMo" resultMap="BaseResultMap">
+        select * from t_toys WHERE
+        (name LIKE  '%'#{types}'%')
+        OR (brand LIKE  '%'#{types}'%');
+    </select>
 </mapper>

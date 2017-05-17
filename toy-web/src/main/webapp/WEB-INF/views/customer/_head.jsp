@@ -15,17 +15,17 @@
             <li class="li_1"><a class="bl" href="###">手机版</a></li><span>|</span>
             <li class="li_2"><a class="bl" href="${ctx}/helpCenter">帮助中心</a></li><span>|</span>
             <li class="li_3" id="collectBox"><a class="bl" href="${ctx}/cart/toyCartInto">购物车<b>0</b>件</a></li><span>|</span>
-            <li class="li_4"><a class="bl" href="${ctx}/personCenter">个人中心</a></li>
+            <li class="li_4"><a class="bl" href="${ctx}/cart/toyCartInto">个人中心</a></li>
         </ul>
     </div>
 </div>
 <div class="header2">
     <div class="header2_main w1200">
-        <div class="logo fl"><a class="bl" href="index.html"><img src="${ctx}/static/img/index_logo.png" alt=""></a></div>
+        <div class="logo fl"><a class="bl" href="${ctx}/"><img src="${ctx}/static/img/index_logo.png" alt=""></a></div>
         <div class="search_box fr">
             <form>
                 <input id="search" class="search" type="text" placeholder="变形金刚   钢琴   满额立减"/>
-                <input class="submit" type="submit" value="" />
+                <input class="submit" type="button" value="" id="searchByname"/>
             </form>
         </div>
     </div>
@@ -54,5 +54,10 @@
             window.location.href='/';
         })
     }
+    $("#searchByname").click(function (data) {
+        var type=$("#search").val();
+        console.log("1111");
+        window.location.href='${ctx}/toy/searchList?type='+type;
+    })
 </script>
 <!-- 头部 end -->

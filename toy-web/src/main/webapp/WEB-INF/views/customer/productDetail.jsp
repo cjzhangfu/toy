@@ -157,7 +157,6 @@
 	function buy(){
 		var toysId=$("#toysId").val();
 		var toysNum=$("#toysNum").val();
-		console.log(toysId,toysNum);
 		var datas=[
 			{
 				toys_id:toysId,

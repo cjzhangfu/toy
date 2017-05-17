@@ -45,6 +45,12 @@ public class ToyController {
         logger.info(pageInfo.getList().toString());
         return "customer/list";
     }
+    @RequestMapping("searchList")
+    public String searchList(@RequestParam String type, Model model){
+        List<ToysInfoBean> list=toysInfoService.selectMo(type);
+        model.addAttribute("toysList",list);
+        return "customer/list";
+    }
     @RequestMapping("/admin_toyList")
     public String admin_toyList(Model model){
         List<ToysInfoBean> list =toysInfoService.selectAll();

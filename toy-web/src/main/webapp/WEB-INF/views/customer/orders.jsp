@@ -69,7 +69,7 @@
         <div class="beizhu">
             <span>添加备注：</span><textarea id="remark"></textarea>
         </div>
-        <h2>合计：<span class="fr">￥59</span></h2>
+        <h2>合计：<span class="fr" >￥<span id="toystotalPrices">59</span></span></h2>
         <div class="btns fr">
             <button id="reset" type="reset" class="fr">取消</button>
             <button id="submitGo" type="submit" class="fr">提交付款</button>
@@ -128,8 +128,9 @@
                                 }
                             }
                             ajax(params,function (datass) {
-                                layer.alert("支付成功！")
-                                layer.close(index);
+                                layer.alert(datass,function () {
+                                    window.location.href="${ctx}/orders/myorders";
+                                })
                             })
                         }
                     })

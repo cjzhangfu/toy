@@ -40,7 +40,7 @@
                 <tbody id="cartData">
                 <c:forEach items="${toys}" var="toys">
                     <tr>
-                    <td class="goods"><a href="show.html" target="_blank"><img src="/uploadImage/${fn:split(toys.picture,',')[0]}" alt=""/></a><span><a href="show.html" target="_blank">${toys.decription}</a></span><b>颜色分类：红色</b></td>
+                    <td class="goods"><a href="${ctx}/toy/toyDetail?id=${toys.id}" target="_blank"><img src="/uploadImage/${fn:split(toys.picture,',')[0]}" alt=""/></a><span><a href="${ctx}/toy/toyDetail?id=${toys.id}" target="_blank">${toys.decription}</a></span></td>
                     <td class="price">
                     <h3>品    牌：${toys.brand}</h3>
                     <h3>市场价格：￥${toys.price}</h3>
@@ -73,6 +73,7 @@
         }
         ajax(params,function(data){
             layer.alert(data);
+            window.location.reload();
         })
     }
 </script>

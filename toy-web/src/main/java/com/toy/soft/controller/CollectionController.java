@@ -67,7 +67,6 @@ public class CollectionController {
                toysId.add(list.get(i).getToysid());
            }
            List<ToysInfoBean> toys=toysInfoService.selectByListToysId(toysId);
-           System.out.println(toys.get(0).toString());
            model.addAttribute("toys",toys);
        }catch(Exception e){
            logger.error(e.getMessage());

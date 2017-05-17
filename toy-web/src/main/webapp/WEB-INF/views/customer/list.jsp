@@ -24,11 +24,11 @@
 				<div class="sort">
 					<h2>产品分类</h2>
 					<ul>
-						<li><a href="${ctx}/toy/list?type=婴儿">婴儿专区(0-3岁)</a></li>
-						<li><a href="${ctx}/toy/list?type=幼儿">幼儿专区(3-6岁)</a></li>
-						<li><a href="${ctx}/toy/list?type=儿童">儿童专区(6-11岁)</a></li>
-						<li><a href="${ctx}/toy/list?type=少年">少年专区(11-15岁)</a></li>
-						<li><a href="${ctx}/toy/list?type=青年">青年专区(>15岁)</a></li>
+						<li><a href="${ctx}/toy/list?type=婴儿类型">婴儿专区(0-3岁)</a></li>
+						<li><a href="${ctx}/toy/list?type=幼儿类型">幼儿专区(3-6岁)</a></li>
+						<li><a href="${ctx}/toy/list?type=儿童类型">儿童专区(6-11岁)</a></li>
+						<li><a href="${ctx}/toy/list?type=少年类型">少年专区(11-15岁)</a></li>
+						<li><a href="${ctx}/toy/list?type=青年类型">青年专区(>15岁)</a></li>
 					</ul>
 				</div>
 				<div class="hot">

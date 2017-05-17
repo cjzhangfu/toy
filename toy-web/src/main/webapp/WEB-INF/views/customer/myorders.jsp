@@ -36,31 +36,9 @@
         </div>
         <div class="right fr">
             <h2>我的订单</h2>
-            <table id="cartTable" cellpadding="0" cellspacing="0">
-                <tbody id="cartData">
-                <tr><td colspan="3"><h3>订单编号：</h3></td></tr>
-                <tr><td colspan="3"><h3>地址信息：</h3></td></tr>
-                <tr>
-                    <td class="top">
-                        <h3>订单状态：</h3>
-                        <h3>订单总量：</h3>
-                        <h3>支付总金额：</h3>
-                    </td>
-                    <td class="top">
-                        <h3>创建时间：</h3>
-                        <h3>下单时间：</h3>
-                    </td>
-                </tr>
-                <tr>
-                    <input type="hidden" class="toys_ids" value=""/>
-                    <td class="goods"><a href="show.html" target="_blank"><img src="/uploadImage/" alt=""/></a><b>颜色分类：红色</b></td>
-                    <td>
-                        <h3>购买数量：￥</h3>
-                        <h3>价　　格：￥</h3>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="first" style="height: 600px;overflow: auto">
+
+            </div>
         </div>
     </div>
 </div>
@@ -69,6 +47,7 @@
 <%@include file="_down.jsp"%>
 <script type="text/javascript" src="${ctx}/static/js/plugins/layer/layer.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/plugins/common/commons.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/moment.js"></script>
 <script>
         var params={
             url:"${ctx}/orders/myordersData",
@@ -78,8 +57,39 @@
         console.log(result);
         var html="";
         $.each(result,function (i,v) {
-
+            html+='<table id="cartTable" cellpadding="0" cellspacing="0">'+
+                    '<tbody id="cartData">'+
+                    '<tr><td colspan="2"><h3>订单编号：'+v.number+'</h3></td></tr>'+
+                    '<tr><td colspan="2"><h3>地址信息：'+v.address.contact+'--'+v.address.mobile+'</h3></td></tr>'+
+                    '<tr>'+
+                    '<td class="top">'
+                    if(v.status=="未支付"){
+                        html+='<h3>订单状态：'+v.status+'<button id="" type="submit" class="">去支付</button></h3>'
+                    }else{
+                        html+='<h3>订单状态：'+v.status+'</h3>'
+                    }
+                    html+='<h3>订单总量：'+v.total_amount+'</h3>'+
+                    '<h3>支付总金额：'+v.total_price+'</h3>'+
+                    '</td>'+
+                    '<td class="top">'+
+                    '<h3>创建时间：'+moment(v.creat_time).format('YYYY-MM-DD HH:mm:ss')+'</h3>'+
+                    '<h3>下单时间：'+(v.payment_time ? moment(v.payment_time).format('YYYY-MM-DD HH:mm:ss'):"")+'</h3>'+
+                    '</td>'+
+                    '</tr>';
+                for(var i=0;i<v.ordersToys.length;i++){
+                    html+='<tr>'+
+                            '<input type="hidden" class="toys_ids" value=""/>'+
+                            '<td class="goods"><a href="show.html" target="_blank"><img src="/uploadImage/'+(v.ordersToys[i].toysInfoBean.picture).split(",")[0]+'" alt=""/></a><b>'+v.ordersToys[i].toysInfoBean.name+'</b></td>'+
+                            '<td>'+
+                            '<h3>购买数量：'+v.ordersToys[i].number+'</h3>'+
+                            '<h3>价　　格：￥'+v.ordersToys[i].toysInfoBean.price+'</h3>'+
+                            '</td>'+
+                            '</tr>'+
+                            '</tbody>'+
+                            '</table>'
+                }
         })
+        $(".first").html(html);
     })
 </script>
 </body>

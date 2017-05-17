@@ -53,14 +53,14 @@
                 </ul>
             </dd>
         </dl>
-        <dl id="menu-picture">
-            <dt><i class="Hui-iconfont">&#xe613;</i> 广告管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a href="picture-list.html" title="广告管理">广告管理</a></li>
-                </ul>
-            </dd>
-        </dl>
+        <%--<dl id="menu-picture">--%>
+            <%--<dt><i class="Hui-iconfont">&#xe613;</i> 广告管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>--%>
+            <%--<dd>--%>
+                <%--<ul>--%>
+                    <%--<li><a href="picture-list.html" title="广告管理">广告管理</a></li>--%>
+                <%--</ul>--%>
+            <%--</dd>--%>
+        <%--</dl>--%>
         <dl id="menu-picture">
             <dt><i class="Hui-iconfont">&#xe613;</i> 玩具分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>

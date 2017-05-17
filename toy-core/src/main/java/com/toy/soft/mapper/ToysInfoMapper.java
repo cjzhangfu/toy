@@ -58,5 +58,9 @@ public interface ToysInfoMapper {
      */
     List<ToysInfoBean> selectByNames(String name);
     List<ToysInfoBean> selectByListToysId(List<String> toysId);
+    /**
+     * 根据玩具名称或者玩具品牌模糊查询
+     */
+    List<ToysInfoBean> selectMo(String types);
 
 }
