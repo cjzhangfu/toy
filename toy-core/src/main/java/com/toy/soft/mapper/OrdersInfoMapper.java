@@ -37,4 +37,5 @@ public interface OrdersInfoMapper {
      */
     List<OrdersInfoBean> select();
     OrdersInfoBean selectByKey(String id);
+    List<OrdersInfoBean> selectByUserId(String byer_id);
 }

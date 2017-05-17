@@ -30,10 +30,10 @@
                 <img src="${ctx}/static/img/user_photo.jpg"/>
             </div>
             <ul>
-                <li><a  href="${ctx}/cart">我的购物车<span>></span></a></li>
-                <li><a href="user.html">已买到的商品<span>></span></a></li>
-                <li><a  class="on" href="${ctx}/personCenter">地址信息<span>></span></a></li>
-                <li><a   href="${ctx}/collection/collectionData">个人收藏<span>></span></a></li>
+                <li><a   href="${ctx}/cart">我的购物车<span>></span></a></li>
+                <li><a  href="${ctx}/orders/myorders">我的订单<span>></span></a></li>
+                <li><a  class="on" href="${ctx}/address/addressInfo">地址信息<span>></span></a></li>
+                <li><a  href="${ctx}/collection/collectionData">个人收藏<span>></span></a></li>
             </ul>
         </div>
         <div class="right fr">

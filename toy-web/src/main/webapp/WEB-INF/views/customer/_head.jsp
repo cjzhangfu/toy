@@ -4,7 +4,8 @@
     <div class="header_main w1200">
             <c:choose>
             <c:when test="${sessionScope.user!=null}">
-            <p class="fl">欢迎${sessionScope.user.account}光临商城</p>
+            <p class="fl">欢迎[${sessionScope.user.account}]光临玩具商城</p>
+                <p class="fl" style="margin-left: 20px"><a href="javascript:; "onclick="loginOut()">[退出登录]</a> </p>
             </c:when>
             <c:otherwise>
                 <p class="fl">您好，请 <a href="${ctx}/customer/login">[登录]</a> <a href="/customer/regist">[免费注册]</a></p>
@@ -41,4 +42,17 @@
         </ul>
     </div>
 </div>
+<script type="text/javascript" src="${ctx}/static/js/plugins/common/commons.js" ></script>
+
+<script>
+    function loginOut(){
+        var params={
+            url:"${ctx}/customer/loginOut",
+            method:"get",
+        }
+        ajax(params,function(data){
+            window.location.href='/';
+        })
+    }
+</script>
 <!-- 头部 end -->

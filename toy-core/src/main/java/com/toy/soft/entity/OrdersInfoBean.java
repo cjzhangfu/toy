@@ -19,6 +19,8 @@ public class OrdersInfoBean {
     private String status;
     private String address_id;
     private List<ToysInfoBean> list;
+    private AddressInfoBean address;
+    private List<OrdersToysInfoBean> ordersToys;
 
     public String getId() {
         return id;
@@ -114,5 +116,21 @@ public class OrdersInfoBean {
 
     public void setList(List<ToysInfoBean> list) {
         this.list = list;
+    }
+
+    public AddressInfoBean getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressInfoBean address) {
+        this.address = address;
+    }
+
+    public List<OrdersToysInfoBean> getOrdersToys() {
+        return ordersToys;
+    }
+
+    public void setOrdersToys(List<OrdersToysInfoBean> ordersToys) {
+        this.ordersToys = ordersToys;
     }
 }

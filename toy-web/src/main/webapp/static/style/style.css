@@ -1138,3 +1138,9 @@ margin-right:3px;}
 .cart button{width:100px;height:30px;background:#4f5ce8;border:none;line-height:32px;
 text-align:center;color:#fff;border-radius:5px;margin:10px 0 10px 20px;}
 input[type=radio]{-webkit-appearance:radio;width:15px;height:15px;}
+
+/*我的订单*/
+.cart.order h2{margin:0;}
+.cart table{border: 1px solid #ccc;}
+.cart.order table h3{text-align: left;}
+.cart.order table td.top{vertical-align: top;}

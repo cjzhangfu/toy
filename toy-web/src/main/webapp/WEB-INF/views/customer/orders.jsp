@@ -128,7 +128,7 @@
                                 }
                             }
                             ajax(params,function (datass) {
-                                layer.msg("支付成功！",{time:1000})
+                                layer.alert("支付成功！")
                                 layer.close(index);
                             })
                         }

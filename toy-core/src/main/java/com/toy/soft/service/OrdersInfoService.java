@@ -31,4 +31,7 @@ public class OrdersInfoService {
     public OrdersInfoBean selectByKey(String key){
         return mapper.selectByKey(key);
     }
+    public List<OrdersInfoBean> selectByUserId(String byer_id){
+        return mapper.selectByUserId(byer_id);
+    }
 }

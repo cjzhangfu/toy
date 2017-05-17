@@ -106,7 +106,7 @@ public class OrdersController {
             OrdersInfoBean orders=ordersInfoService.selectByKey(id);
             orders.setPayment_time(new Date());
             orders.setPayment_price(orders.getTotal_price());
-            orders.setStatus("已付款!");
+            orders.setStatus("已付款");
             ordersInfoService.updateOrders(orders);
             result.setStatus(OperateResult.SUCCESS.toString());
             result.setStatus("支付成功！");
@@ -121,11 +121,25 @@ public class OrdersController {
         return "customer/myorders";
     }
     @RequestMapping(value = "myordersData",method = RequestMethod.GET)
-    public @ResponseBody  JsonMessage<String>myordersData(HttpServletRequest request){
-        JsonMessage<String> result = new JsonMessage<>();
+    public @ResponseBody  JsonMessage<List<OrdersInfoBean>>myordersData(HttpServletRequest request){
+        JsonMessage<List<OrdersInfoBean>> result = new JsonMessage<>();
+        try{
         UserInfoBean user= (UserInfoBean) request.getSession().getAttribute("user");
-        return null;
-
+        List<OrdersInfoBean> orders=ordersInfoService.selectByUserId(user.getId());
+        for(int i=0;i<orders.size();i++){
+            orders.get(i).setAddress(addressInfoService.selectById(orders.get(i).getAddress_id()));
+            List<OrdersToysInfoBean> ordersToysInfoBeen=infoService.findByOrdersId(orders.get(i).getId());
+            for(int j=0;j<ordersToysInfoBeen.size();j++){
+                ordersToysInfoBeen.get(j).setToysInfoBean(toysInfoService.selectById(ordersToysInfoBeen.get(j).getToys_id()));
+            }
+            orders.get(i).setOrdersToys(ordersToysInfoBeen);
+        }
+        result.setStatus(OperateResult.SUCCESS.toString());
+        result.setData(orders);
+        }catch(Exception e){
+            result.setStatus(OperateResult.FALLED.toString());
+            result.setErrorMsg("获取失败");
+        }
+        return result;
     }
-
 }

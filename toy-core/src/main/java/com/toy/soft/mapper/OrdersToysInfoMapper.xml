@@ -17,4 +17,10 @@
     <select id="findByOrdersId" resultMap="BaseResultMap">
         select * from t_toys_orders WHERE orders_id=#{orders_id,jdbcType=VARCHAR};
     </select>
+    <select id="findByOrdersIdList" parameterType="java.util.List">
+        SELECT * FROM t_toys_orders WHERE orders_id IN
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+                #{item}
+        </foreach>
+    </select>
 </mapper>

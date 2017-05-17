@@ -21,4 +21,8 @@ public class OrdersToysInfoService {
         List<OrdersToysInfoBean> list=mapper.findByOrdersId(ordersId);
         return list;
     }
+    public List<OrdersToysInfoBean> findByOrdersIdList(List<String> list) {
+        List<OrdersToysInfoBean> bean=mapper.findByOrdersIdList(list);
+        return bean;
+    }
 }

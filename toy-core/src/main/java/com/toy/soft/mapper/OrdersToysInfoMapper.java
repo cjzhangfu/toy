@@ -12,4 +12,5 @@ import java.util.List;
 public interface OrdersToysInfoMapper {
     int insert(List<OrdersToysInfoBean> list);
     List<OrdersToysInfoBean> findByOrdersId(String orders_id);
+    List<OrdersToysInfoBean> findByOrdersIdList(List<String> list);
 }
