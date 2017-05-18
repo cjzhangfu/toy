@@ -64,7 +64,7 @@
                     '<tr>'+
                     '<td class="top">'
                     if(v.status=="未支付"){
-                        html+='<h3>订单状态：'+v.status+'<button id="" type="submit" class="">去支付</button></h3>'
+                        html+='<h3>订单状态：'+v.status+'<button id="playMoney" type="button" class="" del="'+v.id+'"cal="'+v.total_price+'">去支付</button></h3>'
                     }else{
                         html+='<h3>订单状态：'+v.status+'</h3>'
                     }
@@ -91,6 +91,33 @@
 
         })
         $(".first").html(html);
+    })
+
+    $(document).on("click","#playMoney",function(){
+        var findId=$(this).attr("del");
+        var money=$(this).attr("cal");
+        layer.open({
+            title:"支付",
+            content:"确认支付￥"+money,
+            btn:['确认','取消'],
+            yes:function (index) {
+                var params={
+                    url:"${ctx}/orders/payMoney",
+                    method:"post",
+                    data:{
+                        id:findId
+                    }
+                }
+                ajax(params,function (datass) {
+                    layer.alert(datass,function () {
+                        window.location.href="${ctx}/orders/myorders";
+                    })
+                })
+            },
+            no:function (index) {
+                window.location.href="${ctx}/orders/myorders";
+            }
+        })
     })
 </script>
 </body>

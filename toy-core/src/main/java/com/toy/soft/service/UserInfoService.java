@@ -104,4 +104,7 @@ public class UserInfoService {
         }
         return userInfoBean;
     }
+    public int updateByAccAndEmail(UserInfoBean userInfoBean){
+        return mapper.updateByAccAndEmail(userInfoBean);
+    }
 }

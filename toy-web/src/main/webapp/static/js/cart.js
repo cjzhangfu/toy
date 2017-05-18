@@ -124,6 +124,7 @@ $(function(){
 			dataType:'json',
 			success: function (data) {
 				if(data.status=="success"){
+
 					window.location.href=place+"/orders/buy";
 				}else{
 					layer.alert("请先登录！")

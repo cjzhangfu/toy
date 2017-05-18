@@ -9,7 +9,7 @@
 	<!-- 注册头部 begin -->
     <div class="reg_header">
 		<div class="reg_header_main w1200">
-			<div class="logo fl"><a class="bl" href="index.html"><img src="${ctx}/static/img/reg_logo.png" alt=""></a></div>
+			<div class="logo fl"><a class="bl" href="/"><img src="${ctx}/static/img/reg_logo.png" alt=""></a></div>
 			<a class="to_index fr" href="/">进入商城</a>
 		</div>
 	</div>
@@ -31,7 +31,7 @@
 						<a href="javascript:"><input type="button" class="submit" id="submit" value="登 录"></a>
 						<li class="end">
 							<input type="checkbox" class="checkbox" id="checkbox"><label for="checkbox">自动登录</label>
-							<p class="fr"><a href="/forget1">忘记密码?</a> | <a href="reg.html">立即注册</a></p>
+							<p class="fr"><a href="${ctx}/customer/forget">忘记密码?</a> | <a href="${ctx}/customer/login">立即注册</a></p>
 						</li>
 					</ul>
 			</div>

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -139,6 +140,47 @@ public class OrdersController {
         }catch(Exception e){
             result.setStatus(OperateResult.FALLED.toString());
             result.setErrorMsg("获取失败");
+        }
+        return result;
+    }
+    @RequestMapping("orders_list")
+        public String ordersList(){
+        return "admin/orders_list";
+    }
+    @RequestMapping(value = "myordersDataSource",method = RequestMethod.GET)
+    public @ResponseBody  JsonMessage<List<OrdersInfoBean>> myordersDataSource(HttpServletRequest request){
+        JsonMessage<List<OrdersInfoBean>> result = new JsonMessage<>();
+        try{
+            String id =request.getParameter("id");
+            List<OrdersInfoBean> orders=new ArrayList<>();
+            if(StringUtils.isEmpty(id)){
+                orders=ordersInfoService.select();
+            }else{
+                orders=ordersInfoService.selectById(id);
+            }
+            for(int i=0;i<orders.size();i++){
+                orders.get(i).setAddress(addressInfoService.selectById(orders.get(i).getAddress_id()));
+                List<OrdersToysInfoBean> ordersToysInfoBeen=infoService.findByOrdersId(orders.get(i).getId());
+                for(int j=0;j<ordersToysInfoBeen.size();j++){
+                    ordersToysInfoBeen.get(j).setToysInfoBean(toysInfoService.selectById(ordersToysInfoBeen.get(j).getToys_id()));
+                }
+                orders.get(i).setOrdersToys(ordersToysInfoBeen);
+            }
+            result.setStatus(OperateResult.SUCCESS.toString());
+            result.setData(orders);
+        }catch(Exception e){
+            result.setStatus(OperateResult.FALLED.toString());
+            result.setErrorMsg("获取失败");
+        }
+        return result;
+    }
+    @RequestMapping(value = "delectOrders",method = RequestMethod.GET)
+    public @ResponseBody JsonMessage<String> delectOrders(String id){
+        JsonMessage<String> result=new JsonMessage<>();
+        try{
+
+        }catch(Exception e){
+
         }
         return result;
     }

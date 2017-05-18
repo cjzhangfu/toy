@@ -49,5 +49,8 @@
         SELECT * FROM t_orders WHERE
         byer_id=#{byer_id,jdbcType=VARCHAR}
     </select>
-
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM t_orders WHERE
+        id=#{id,jdbcType=VARCHAR}
+    </select>
 </mapper>

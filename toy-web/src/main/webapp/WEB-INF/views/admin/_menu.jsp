@@ -10,14 +10,6 @@
 <aside class="Hui-aside">
     <input runat="server" id="divScrollValue" type="hidden" value="" />
     <div class="menu_dropdown bk_2">
-        <!--<dl id="menu-article">
-            <dt><i class="Hui-iconfont">&#xe616;</i> 资讯管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-            <dd>
-                <ul>
-                    <li><a href="article-list.html" title="资讯管理">资讯管理</a></li>
-        </ul>
-    </dd>
-</dl>-->
         <dl id="menu-picture">
             <dt><i class="Hui-iconfont">&#xe613;</i> 玩具管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
@@ -30,7 +22,7 @@
             <dt><i class="Hui-iconfont">&#xe620;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    <li><a href="order-list.html" title="订单管理">已派送订单管理</a></li>
+                    <li><a href="${ctx}/orders/orders_list" title="订单管理">订单管理</a></li>
                 </ul>
             </dd>
         </dl>
@@ -53,14 +45,6 @@
                 </ul>
             </dd>
         </dl>
-        <%--<dl id="menu-picture">--%>
-            <%--<dt><i class="Hui-iconfont">&#xe613;</i> 广告管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>--%>
-            <%--<dd>--%>
-                <%--<ul>--%>
-                    <%--<li><a href="picture-list.html" title="广告管理">广告管理</a></li>--%>
-                <%--</ul>--%>
-            <%--</dd>--%>
-        <%--</dl>--%>
         <dl id="menu-picture">
             <dt><i class="Hui-iconfont">&#xe613;</i> 玩具分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>

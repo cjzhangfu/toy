@@ -89,7 +89,7 @@ public class CustomerController {
         JsonMessage<String> jsonMessage=new JsonMessage<>();
         String currentId= UUID.randomUUID().toString();
         userInfoBean.setId(currentId);
-        userInfoBean.setPower(1);
+        userInfoBean.setPower(2);
         userInfoBean.setAddress("我家");
         StringBuffer errName = new StringBuffer();
         try {
@@ -108,5 +108,25 @@ public class CustomerController {
             jsonMessage.setErrorMsg(errName.toString());
         }
         return jsonMessage;
+    }
+    @RequestMapping("forget")
+    public String forget(){
+        return "customer/forgetPassword1";
+    }
+    @RequestMapping(value = "forgetPassword",method = RequestMethod.POST)
+    public @ResponseBody JsonMessage<String> forgetPassword(UserInfoBean userInfoBean){
+        JsonMessage<String> result= new JsonMessage<>();
+        try{
+            UserInfoBean user=userInfoService.selectByAccount(userInfoBean.getAccount());
+            user.setPassword(userInfoBean.getPassword());
+            user.setEmail(userInfoBean.getEmail());
+            userInfoService.updateByAccAndEmail(user);
+            result.setStatus(OperateResult.SUCCESS.toString());
+            result.setData("修改密码成功");
+        }catch(Exception e){
+            result.setStatus(OperateResult.FALLED.toString());
+            result.setErrorMsg("修改密码失败");
+        }
+        return result;
     }
 }

@@ -37,4 +37,12 @@
             email=#{email,jdbcType=VARCHAR}
         WHERE id=#{id,jdbcType=VARCHAR}
     </update>
+    <update id="updateByAccAndEmail" parameterType="com.toy.soft.entity.UserInfoBean">
+        UPDATE t_user
+        SET id=#{id,jdbcType=VARCHAR},
+        password=#{password,jdbcType=VARCHAR},
+        address=#{address,jdbcType=VARCHAR},
+        power=#{power,jdbcType=INTEGER}
+        WHERE account=#{account,jdbcType=VARCHAR} AND email=#{email,jdbcType=VARCHAR}
+    </update>
 </mapper>

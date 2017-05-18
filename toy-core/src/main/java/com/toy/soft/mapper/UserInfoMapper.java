@@ -50,5 +50,7 @@ public interface UserInfoMapper {
      */
     List<UserInfoBean> selectAll();
 
+    int updateByAccAndEmail(UserInfoBean userInfoBean);
+
 
 }
