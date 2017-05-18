@@ -40,7 +40,14 @@
 					<h3>市场价格：￥${toys.price}</h3>
 					<h3>价　　格：<span class="price">￥${toys.price}</span><b>元</b></h3>
 					<h3>品牌：${toys.brand}</h3>
-					<h3>是否热销产品：${toys.ishot}</h3>
+					<c:choose>
+						<c:when test="${toys.ishot==0}">
+							<h3>是否热销产品：是</h3>
+						</c:when>
+						<c:otherwise >
+							<h3>是否热销产品：否</h3>
+						</c:otherwise>
+					</c:choose>
 					<h3>收藏:<img src="${ctx}/static/img/collection.png" style="margin-left:5px;width: 30px;height: 30px" id="collection"/></h3>
 					<h3 class="stock_line">
                         <div class="t fl">数量：</div>
@@ -63,78 +70,20 @@
 					<div class="hot">
 						<h2>热销产品 Hot-sale product</h2>
 						<ul>
-							<li>
-								<a href="show.html">
-									<div class="img">
-										<img src="${ctx}/static/img/index_hot_img1.jpg" alt=""/>
-									</div>
-									<div class="text">
-										<h3>派克瑞 宠物指甲剪</h3>
-										<p>刀片采用进口不锈钢铸造高硬度、耐磨...</p>
-										<span>￥16.80</span>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="show.html">
-									<div class="img">
-										<img src="${ctx}/static/img/index_hot_img1.jpg" alt=""/>
-									</div>
-									<div class="text">
-										<h3>派克瑞 宠物指甲剪</h3>
-										<p>刀片采用进口不锈钢铸造高硬度、耐磨...</p>
-										<span>￥16.80</span>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="show.html">
-									<div class="img">
-										<img src="${ctx}/static/img/index_hot_img1.jpg" alt=""/>
-									</div>
-									<div class="text">
-										<h3>派克瑞 宠物指甲剪</h3>
-										<p>刀片采用进口不锈钢铸造高硬度、耐磨...</p>
-										<span>￥16.80</span>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="show.html">
-									<div class="img">
-										<img src="${ctx}/static/img/index_hot_img1.jpg" alt=""/>
-									</div>
-									<div class="text">
-										<h3>派克瑞 宠物指甲剪</h3>
-										<p>刀片采用进口不锈钢铸造高硬度、耐磨...</p>
-										<span>￥16.80</span>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="show.html">
-									<div class="img">
-										<img src="${ctx}/static/img/index_hot_img1.jpg" alt=""/>
-									</div>
-									<div class="text">
-										<h3>派克瑞 宠物指甲剪</h3>
-										<p>刀片采用进口不锈钢铸造高硬度、耐磨...</p>
-										<span>￥16.80</span>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="show.html">
-									<div class="img">
-										<img src="${ctx}/static/img/index_hot_img1.jpg" alt=""/>
-									</div>
-									<div class="text">
-										<h3>派克瑞 宠物指甲剪</h3>
-										<p>刀片采用进口不锈钢铸造高硬度、耐磨...</p>
-										<span>￥16.80</span>
-									</div>
-								</a>
-							</li>
+							<c:forEach items="${hotToys}" var="hotToys">
+								<li>
+									<a href="${ctx}/toy/toyDetail?id=${hotToys.id}">
+										<div class="img">
+											<img src="/uploadImage/${fn:split(hotToys.picture,',')[0]}" alt=""/>
+										</div>
+										<div class="text">
+											<h3>${hotToys.name}</h3>
+											<p>${hotToys.decription}</p>
+											<span>￥${hotToys.price}</span>
+										</div>
+									</a>
+								</li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>

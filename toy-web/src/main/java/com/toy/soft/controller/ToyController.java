@@ -29,6 +29,13 @@ public class ToyController {
     public String toyDetail(@RequestParam String id, Model model){
         logger.info(id);
         ToysInfoBean toysInfoBean=toysInfoService.selectById(id);
+        PageQuery hotePage =new PageQuery();
+        hotePage.setPageNum(1);
+        hotePage.setPageSize(6);
+        PageInfo<ToysInfoBean> pageInfo1=toysInfoService.selectByPage(hotePage);
+        if(pageInfo1!=null&&pageInfo1.getList()!=null&&pageInfo1.getList().size()>0){
+            model.addAttribute("hotToys",pageInfo1.getList());
+        }
         model.addAttribute("toys",toysInfoBean);
         return "customer/productDetail";
     }
@@ -41,6 +48,13 @@ public class ToyController {
         PageInfo<ToysInfoBean> pageInfo=toysInfoService.selectByTypepage(pageQuery,type);
         if(pageInfo!=null&&pageInfo.getList()!=null&&pageInfo.getList().size()>0){
             model.addAttribute("toysList",pageInfo.getList());
+        }
+        PageQuery hotePage =new PageQuery();
+        hotePage.setPageNum(1);
+        hotePage.setPageSize(6);
+        PageInfo<ToysInfoBean> pageInfo1=toysInfoService.selectByPage(hotePage);
+        if(pageInfo1!=null&&pageInfo1.getList()!=null&&pageInfo1.getList().size()>0){
+            model.addAttribute("hotToys",pageInfo1.getList());
         }
         logger.info(pageInfo.getList().toString());
         return "customer/list";

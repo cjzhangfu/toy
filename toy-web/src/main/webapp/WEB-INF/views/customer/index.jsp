@@ -43,7 +43,7 @@
                 <ul>
                 <c:forEach items="${hotToys}" var="hotToys">
                     <li>
-                        <a href="show.html">
+                        <a href="${ctx}/toy/toyDetail?id=${hotToys.id}">
                             <div class="img">
                                 <img src="/uploadImage/${fn:split(hotToys.picture,',')[0]}" alt=""/>
                             </div>
@@ -61,9 +61,6 @@
                 <div class="adv">
                     <a href="###"><img src="${ctx}/static/img/index_l1.jpg" alt=""/></a>
                 </div>
-                <%--<div class="adv">--%>
-                    <%--<a href="###"><img src="${ctx}/static/img/index_l2.jpg" alt=""/></a>--%>
-                <%--</div>--%>
             </div>
         </div>
         <div class="right fr">

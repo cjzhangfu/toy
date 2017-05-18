@@ -34,42 +34,20 @@
 				<div class="hot">
 					<h2>热销产品 Hot-sale product</h2>
 					<ul>
-						<li>
-							<a href="show.html">
-								<div class="img">
-									<img src="${ctx}/static/img/index_hot_img1.jpg" alt=""/>
-								</div>
-								<div class="text">
-									<h3>派克瑞 宠物指甲剪</h3>
-									<p>刀片采用进口不锈钢铸造高硬度、耐磨...</p>
-									<span>￥16.80</span>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="show.html">
-								<div class="img">
-									<img src="${ctx}/static/img/index_hot_img1.jpg" alt=""/>
-								</div>
-								<div class="text">
-									<h3>派克瑞 宠物指甲剪</h3>
-									<p>刀片采用进口不锈钢铸造高硬度、耐磨...</p>
-									<span>￥16.80</span>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="show.html">
-								<div class="img">
-									<img src="${ctx}/static/img/index_hot_img1.jpg" alt=""/>
-								</div>
-								<div class="text">
-									<h3>派克瑞 宠物指甲剪</h3>
-									<p>刀片采用进口不锈钢铸造高硬度、耐磨...</p>
-									<span>￥16.80</span>
-								</div>
-							</a>
-						</li>
+						<c:forEach items="${hotToys}" var="hotToys">
+							<li>
+								<a href="${ctx}/toy/toyDetail?id=${hotToys.id}">
+									<div class="img">
+										<img src="/uploadImage/${fn:split(hotToys.picture,',')[0]}" alt=""/>
+									</div>
+									<div class="text">
+										<h3>${hotToys.name}</h3>
+										<p>${hotToys.decription}</p>
+										<span>￥${hotToys.price}</span>
+									</div>
+								</a>
+							</li>
+						</c:forEach>
 					</ul>
 				</div>
 				<div class="left_adv">
