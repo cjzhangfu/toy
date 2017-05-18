@@ -36,4 +36,5 @@ public interface TypeNameInfoMapper {
      * @return
      */
     List<TypeNameInfoBean> select();
+    List<TypeNameInfoBean> selectByName(String types);
 }

@@ -121,4 +121,17 @@ public class TypeNameController {
         }
         return jsonMessage;
     }
+    @RequestMapping(value = "search",method = RequestMethod.GET)
+    public @ResponseBody JsonMessage<List<TypeNameInfoBean>> search(String types){
+        JsonMessage<List<TypeNameInfoBean>> result=new JsonMessage<>();
+        try{
+            List<TypeNameInfoBean> type=typeNameInfoService.selectByName(types);
+            result.setStatus(OperateResult.SUCCESS.toString());
+            result.setData(type);
+        }catch(Exception e){
+            result.setStatus(OperateResult.FALLED.toString());
+            result.setErrorMsg("删除失败");
+        }
+        return result;
+    }
 }

@@ -21,8 +21,8 @@
     <div class="Hui-article">
         <article class="cl pd-20">
             <div class="text-c">
-                <input type="text" class="input-text" style="width:320px" placeholder="输入管理员名称" id="account" name="">
-                <button type="submit" class="btn btn-success" onclick="admin_search()" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜玩具类型</button>
+                <input type="text" class="input-text" style="width:320px" placeholder="输入玩具类型" id="types" name="">
+                <button type="submit" class="btn btn-success" onclick="typename_search()" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜玩具类型</button>
             </div>
             <div class="cl pd-5 bg-1 bk-gray mt-20">
                 <span class="l"> <a href="javascript:;" onclick="typeName_add()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加玩具类型</a> </span>
@@ -36,7 +36,7 @@
                     <th >操作</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="tablesNames">
                 <c:forEach items="${typeName}" var="item">
                     <tr class="text-c">
                         <td><input name="" type="checkbox" value=""></td>
@@ -72,37 +72,34 @@
      h		弹出层高度（缺省调默认值）
      */
     /*管理员-查询*/
-    function admin_search(){
-        var account =$("#account").val();
+    function typename_search(){
+        var types =$("#types").val();
         var params={
-            url:"/admin/search",
+            url:"/typeName/search",
             method:"get",
             data: {
-                account: account
+                types: types
             }
         }
         ajax(params,function (data) {
             var html="";
-            html+='<tr class="text-c">'+
-                    '<td><input type="checkbox" value="1" name=""></td>'+
-                    '<td>'+data.id+'</td>'+
-                    '<td>'+data.account+'</td>'+
-                    '<td>'+data.password+'</td>'+
-                    '<td>'+data.email+'</td>';
-            if(data.power==1){
-                html+='<td>管理员</td>';
-            }else{
-                html+='<td>普通用户</td>';
-            }
-            html+='<td>'+data.address+'</td>'+
-                    '<td class="td-manage">'+
-                    '<a title="编辑"  href="javascript:;" onclick="typeName_edit(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>'+
-                    '<a title="删除"  href="javascript:;" onclick="type_del(this)" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>'+
-                    '</tr>';
-            $("#adminTable").html(html);
+            $.each(data,function (i,v) {
+                html+=  '<tr class="text-c">'+
+                        '<td><input name="" type="checkbox" value=""></td>'+
+                        '<td>'+v.id+'</td>'+
+                        '<td>'+v.typename+'</td>'+
+                        '<td class="td-manage">'+
+                        '<a style="text-decoration:none" class="ml-5" onClick="typeName_edit(this)" href="javascript:;" title="编辑">'+
+                        '<i class="Hui-iconfont">&#xe6df;</i></a>'+
+                        '<a style="text-decoration:none" class="ml-5" onClick="type_del(this)" href="javascript:;" title="删除">'+
+                        '<i class="Hui-iconfont">&#xe6e2;</i></a>'+
+                        '</td>'+
+                        '</tr>';
+            })
+            $("#tablesNames").html(html);
         })
     }
-    /*管理员-增加*/
+    /*玩具类型-增加*/
     function typeName_add(){
         layer.open({
             type: 2,

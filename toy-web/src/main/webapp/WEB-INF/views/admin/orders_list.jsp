@@ -85,7 +85,7 @@
                         '<td class="td-status"><span>'+moment(v.creat_time).format('YYYY-MM-DD HH:mm:ss')+'</span></td>'+
                         '<td >'+moment(v.payment_time).format('YYYY-MM-DD HH:mm:ss')+'</td>'+
                         '<td>'+v.status+'</td>'+
-                        '<td class="td-manage"><a style="text-decoration:none" class="ml-5" onClick="toy_del(this)" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>'+
+                        '<td class="td-manage"><a style="text-decoration:none" class="ml-5" onClick="toy_del(this)" href="javascript:;" title="删除" id="'+v.id+'"><i class="Hui-iconfont">&#xe6e2;</i></a></td>'+
                         '</tr>';
             })
             $("#toyListData").html(html);
@@ -99,7 +99,6 @@
             method:"get",
         }
         ajax(params,function (result) {
-            console.log(result);
             var html="";
             $.each(result,function (i,v) {
                 html+= '<tr class="text-c">'+
@@ -120,15 +119,15 @@
             $("#toyListData").html(html);
         })
     })
-    /*玩具-删除*/
+    /*订单-删除*/
     function toy_del(obj){
-        var picture_id = $(obj).parents("tr").find("td").eq(1).text();
+        var orders_id = $(obj).attr("id");
         layer.confirm('确认要删除吗？',function(index){
             var params={
-                url:place+"/toy/toyDelete",
+                url:place+"/orders/delectOrders",
                 method:"post",
                 data:{
-                    id:picture_id
+                    id:orders_id
                 }
             }
             ajax(params,function (data) {

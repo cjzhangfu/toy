@@ -29,4 +29,7 @@ public class TypeNameInfoService {
         List<TypeNameInfoBean> list=mapper.select();
         return list;
     }
+    public List<TypeNameInfoBean> selectByName(String types){
+        return mapper.selectByName(types);
+    }
 }

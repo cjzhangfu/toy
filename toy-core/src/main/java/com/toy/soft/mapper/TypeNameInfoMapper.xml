@@ -20,4 +20,8 @@
     <select id="select" resultMap="BaseResultMap">
         SELECT * FROM t_typename
     </select>
+    <select id="selectByName" resultMap="BaseResultMap">
+        SELECT * FROM  t_typename
+        WHERE typename LIKE concat(concat('%',#{types}),'%')
+    </select>
 </mapper>

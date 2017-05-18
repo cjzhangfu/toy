@@ -174,13 +174,16 @@ public class OrdersController {
         }
         return result;
     }
-    @RequestMapping(value = "delectOrders",method = RequestMethod.GET)
+    @RequestMapping(value = "delectOrders",method = RequestMethod.POST)
     public @ResponseBody JsonMessage<String> delectOrders(String id){
         JsonMessage<String> result=new JsonMessage<>();
         try{
-
+            ordersInfoService.delectOrders(id);
+            result.setStatus(OperateResult.SUCCESS.toString());
+            result.setData("删除成功");
         }catch(Exception e){
-
+            result.setStatus(OperateResult.FALLED.toString());
+            result.setErrorMsg("删除失败");
         }
         return result;
     }

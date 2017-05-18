@@ -54,7 +54,8 @@
         }
         ajax(params,function (data) {
             layer.msg('添加成功!',{icon:1,time:1000});
-            layer.close();
+            parent.location.reload();
+            parent.layer.closeAll();
         })
     }
 </script>
