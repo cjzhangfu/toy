@@ -58,23 +58,23 @@
         <div class="row cl">
             <label class="form-label col-xs-2 col-sm-1">玩具品牌:</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="0" placeholder="" id="brand" name="">
+                <input type="text" class="input-text" value="" placeholder="" id="brand" name="">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-2 col-sm-1">适合年龄段:</label>
             <div class="formControls col-xs-3 col-sm-3">
-                <input type="text" class="input-text" value="0" placeholder="" id="startAges" name="">
+                <input type="text" class="input-text" value="" placeholder="" id="startAges" name="">
             </div>
             <label class="form-label col-xs-1 col-sm-1">至</label>
             <div class="formControls col-xs-3 col-sm-3">
-                <input type="text" class="input-text" value="0" placeholder="" id="endAges" name="">
+                <input type="text" class="input-text" value="" placeholder="" id="endAges" name="">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-2 col-sm-1">玩具描述:</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <textarea id="decription" name="" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"></textarea>
+                <textarea id="decription" name="" cols="" rows="" class="textarea"  placeholder="说点什么..." datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"></textarea>
                 <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
             </div>
         </div>
@@ -102,6 +102,7 @@
             method:"get"
         }
         ajax(params,function(data){
+            console.log(data);
             var html="";
             $.each(data,function(i,v){
                 html+='<option value="'+v.typename+'">'+v.typename+'</option>'
@@ -138,7 +139,6 @@
         }
     }
     ajax(params,function(data){
-        console.log(data);
         layer.msg('添加成功!',{icon:1,time:1000});
         parent.location.reload();
         parent.layer.close();

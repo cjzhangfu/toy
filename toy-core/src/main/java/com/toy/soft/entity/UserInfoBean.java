@@ -12,7 +12,7 @@ public class UserInfoBean {
     private Integer power;
     private String email;
 
-    @Override
+
     public String toString() {
         return "UserInfoBean{" +
                 "id='" + id + '\'' +

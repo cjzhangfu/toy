@@ -123,7 +123,7 @@
             <properties>
                 <log.path>f:/logs/toys</log.path>
                 <db.con.driver>com.mysql.jdbc.Driver</db.con.driver>
-                <db.con.url>jdbc:mysql://127.0.0.1:3306/toys?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull</db.con.url>
+                <db.con.url><![CDATA[jdbc:mysql://127.0.0.1:3306/toys?useUnicode=true&characterEncoding=UTF-8]]></db.con.url>
                 <db.con.username>root</db.con.username>
                 <db.con.pwd>root</db.con.pwd>
                 <db.con.initialSize>10</db.con.initialSize>

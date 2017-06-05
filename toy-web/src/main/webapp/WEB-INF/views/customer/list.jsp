@@ -50,14 +50,14 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<div class="left_adv">
-					<div class="adv">
-						<a href="###"><img src="${ctx}/static/img/index_l1.jpg" alt=""/></a>
-					</div>
-					<div class="adv">
-						<a href="###"><img src="${ctx}/static/img/index_l2.jpg" alt=""/></a>
-					</div>
-				</div>
+				<%--<div class="left_adv">--%>
+					<%--<div class="adv">--%>
+						<%--<a href="###"><img src="${ctx}/static/img/index_l1.jpg" alt=""/></a>--%>
+					<%--</div>--%>
+					<%--<div class="adv">--%>
+						<%--<a href="###"><img src="${ctx}/static/img/index_l2.jpg" alt=""/></a>--%>
+					<%--</div>--%>
+				<%--</div>--%>
 			</div>
 			<div class="right fr">
 				<div class="list_con">

@@ -106,55 +106,9 @@ public class CartController {
                     }
                 }
             }
-            result.setStatus(OperateResult.SUCCESS.toString());
-            result.setData(list);
         }
+        result.setStatus(OperateResult.SUCCESS.toString());
+        result.setData(list);
         return result;
     }
-
-//    @RequestMapping(value = "/toyCart",method = RequestMethod.GET)
-//    public
-//     void toyCart(HttpServletRequest request, HttpServletResponse response){
-//        JsonMessage<Map<ToysInfoBean,Integer>> result=new JsonMessage<>();
-//        UserInfoBean user= (UserInfoBean) request.getSession().getAttribute("user");
-//        List<CartInfoBean> list=new ArrayList<>();
-//        if(cartInfoService.selectByUserId(user.getId())!=null){
-//            list=cartInfoService.selectByUserId(user.getId());
-//        }
-//        if(request.getSession().getAttribute("cart")!=null){
-//            List<CartInfoBean> data= (List<CartInfoBean>) request.getSession().getAttribute("cart");
-//            list.addAll(data);
-//        }
-//        if(list.size() > 0){
-//            List<String> toyId = new ArrayList<>();
-//            for(int i=0;i<list.size();i++){
-//                toyId.add(list.get(i).getToys_id());
-//            }
-//            List<ToysInfoBean> date=toysInfoService.selectByListToysId(toyId);
-//            Map<ToysInfoBean,Integer> map=new HashMap<>();
-//            for(int i=0;i<list.size();i++){
-//                for(int j=0;j<date.size();j++){
-//                    if(date.get(j).getId().equals(list.get(i).getToys_id())) {
-//                        map.put(date.get(j),list.get(i).getNum());
-//                    }
-//                }
-//            }
-//            result.setStatus(OperateResult.SUCCESS.toString());
-//            result.setData(map);
-//        }
-//
-//       JSONObject resultJson= (JSONObject) JSON.toJSON(result);
-//
-//        try {
-//            PrintWriter printWriter= response.getWriter();
-//            printWriter.write(resultJson.toJSONString());
-//            printWriter.flush();
-//            printWriter.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
-
-
 }

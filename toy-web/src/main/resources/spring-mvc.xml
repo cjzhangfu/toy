@@ -60,8 +60,8 @@
 		<!--<property name="serializerFeature"> -->
 		<!--这个地方加上这个功能吧，能自己配置一些东西，比如时间的格式化，null输出""等等 --> <!--</property> -->
 		</bean>
-		</mvc:message-converters>
-		</mvc:annotation-driven>
+</mvc:message-converters>
+</mvc:annotation-driven>
 
 	<!-- 静态资源不拦截 -->
 	<mvc:resources mapping="/static/**" location="/static/" />

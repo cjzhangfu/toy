@@ -31,7 +31,6 @@ public class UploadController {
         if(multipartResolver.isMultipart(request)){
             MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
             Iterator<String> iter = multiRequest.getFileNames();
-            System.out.println("1111");
             while(iter.hasNext())
             {
                 MultipartFile file = multiRequest.getFile(iter.next());

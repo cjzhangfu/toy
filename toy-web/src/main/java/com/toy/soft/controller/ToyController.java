@@ -140,7 +140,7 @@ public class ToyController {
     @ResponseBody  JsonMessage<List<ToysInfoBean>>toy_search(String name){
         JsonMessage<List<ToysInfoBean>> result = new JsonMessage<>();
         try{
-            List<ToysInfoBean> list=toysInfoService.selectByNames(name);
+            List<ToysInfoBean> list=toysInfoService.selectMo(name);
             result.setStatus(OperateResult.SUCCESS.toString());
             result.setData(list);
         }catch(Exception e){

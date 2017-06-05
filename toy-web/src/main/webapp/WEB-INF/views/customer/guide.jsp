@@ -15,7 +15,7 @@
             <ul>
                 <li><a  class="on" href="${ctx}/guide">新手指南<span>></span></a></li>
                 <li><a  href="${ctx}/process">购物流程<span>></span></a></li>
-                <li><a  href="${ctx}/httpCenter">常见问题<span>></span></a></li>
+                <li><a  href="${ctx}/helpCenter">常见问题<span>></span></a></li>
                 <li><a href="${ctx}/aboutUs">关于我们<span>></span></a></li>
             </ul>
         </div>

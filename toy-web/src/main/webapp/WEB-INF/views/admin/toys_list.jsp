@@ -28,11 +28,11 @@
                         <th width="40"><input name="" type="checkbox" value=""></th>
                         <th width="80">ID</th>
                         <th width="100">名称</th>
-                        <th width="20">库存数量</th>
+                        <th width="50">库存数量</th>
                         <th width="40">价格</th>
                         <th>分类</th>
                         <th width="40">品牌</th>
-                        <th width="150">适合年龄段</th>
+                        <th width="60">适合年龄段</th>
                         <th width="60">描述</th>
                         <th width="60">图片</th>
                         <th width="100">是否热门</th>
@@ -156,7 +156,6 @@
                 }
             }
             ajax(params,function (data) {
-                console.log(data);
                 $(obj).parents("tr").remove();
                 layer.msg('已删除!',{icon:1,time:1000});
             })
